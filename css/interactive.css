@@ -1,0 +1,92 @@
+/* Basic Styles */
+	#interactiveWrapper {
+		position: relative;
+		margin: 0 auto;
+		width: 900px;
+		height: 600px;
+		font: 'Lusitana';
+		font-family: 'Lusitana', serif;
+		color: #818385;
+	}
+	.slide {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 900px;
+		height: 600px;
+		border: 1px solid #424142;
+	}
+	.slide.active {
+		border: 1px solid #65272f;
+	}
+	.slide .mask {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 900px;
+		height: 600px;
+		background-color: #818385;
+		opacity: .3;
+	}
+	.slide .modal {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 900px;
+		height: 600px;
+		z-index: 10;
+	}
+	.head {
+		font: 'Montserrat';
+		font-family: 'Montserrat', sans-serif;
+		color: #231f20;
+	}
+	.nav {
+		color: #9a3b47;
+	}
+	.icon {
+		cursor: pointer;
+	}
+	.button {
+		cursor: pointer;
+	}
+	a, a:active, a:hover, a:visited { 
+		text-decoration: none;
+	}
+/* Slide 1 */
+	.slide:nth-child(1) {
+		font-size: 12px;
+		font-family: 'Montserrat', sans-serif;
+	}
+	.slide:nth-child(1) .head {
+		position: relative;
+		margin: 42px 42px 24px 42px;
+		text-align: center;
+	}
+	.slide:nth-child(1) .head .s1-img1 {
+		position: relative;
+	}
+	.slide:nth-child(1) .content {
+		margin: 0 42px 24px 42px;
+		line-height: 22px;
+	}
+	.slide:nth-child(1) .button {
+		margin: 0 auto 24px auto;
+		text-align: center;
+		background-color: #9a3b47;
+		padding-top: 12px;
+		height: 36px;
+		width: 192px;
+		color: #FFFFFF;
+		letter-spacing: 1px;
+		border-radius: 8px 8px 8px 8px;
+		-webkit-border-radius: 8px 8px 8px 8px;
+		-moz-border-radius: 8px 8px 8px 8px;
+		-ms-border-radius: 8px 8px 8px 8px;
+		-o-border-radius: 8px 8px 8px 8px;
+	}
+	.slide:nth-child(1) .button .s1-img2 {
+		position: relative;
+		top: 3px;
+		left: 8px;
+	}
