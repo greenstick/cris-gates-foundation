@@ -2,6 +2,14 @@
 	html{
 		background-color: black;
 	}
+	#IMPLEMENTSUPPORTS path:hover, #MONITORPROGRESS path:hover, #ADJUSTSUPPORTS path:hover, #ANALYZERESULTS path:hover, #IDENTIFY path:hover, #PLAN path:hover {
+		fill: #600922;
+		cursor: pointer;
+	} 
+	#CONTEXTS:hover g path, #STATEPOLICY:hover g path, #COMMUNITY:hover g path, #HIGHEREDUCATION:hover g path, #LOCALPOLICY:hover g path, #RING:hover g path{
+		fill: #9a3b47;
+		cursor: pointer;
+	} 
 	#interactiveWrapper {
 		position: relative;
 		margin: 0 auto;
@@ -11,11 +19,11 @@
 		font-family: 'Lusitana', serif;
 		color: #818385;
 		display: inline-block;
-		overflow: scroll;
+		overflow: hidden;
 	}
 	#slideshow {
 		position: relative;
-		top: -738px;
+		top: 0px;
 		left: 0px;
 		width: 3610px;
 		height: 600px;
@@ -31,7 +39,7 @@
 		display: inline-block;
 	}
 	.slide.active {
-		opacity: .7;
+		/*background-color: azure;*/
 	}
 	.slide .mask {
 		position: relative;
@@ -124,11 +132,11 @@
 	.slide:nth-child(2) .head .nav {
 		position: relative;
 		top: 0px;
-		left: 762px;
+		left: 760px;
 		width: 138px;
 		height: 48px;
 		display: inline-block;
-	}
+	}	
 	.slide:nth-child(2) .head .nav .button {
 		position: relative;
 		width: 60px;
@@ -455,7 +463,7 @@
 	.slide:nth-child(3) .head .nav {
 		position: relative;
 		top: 0px;
-		left: 762px;
+		left: 760px;
 		width: 138px;
 		height: 48px;
 		display: inline-block;
@@ -509,6 +517,7 @@
 		width: 90px;
 		display: inline-block;
 		background-color: #9a3b47;
+		cursor: pointer;
 	}
 	.slide:nth-child(3) .content .right .text {
 		position: relative;
@@ -606,8 +615,8 @@
 	.slide:nth-child(4) .head .nav {
 		position: relative;
 		top: 0px;
-		left: 728px;
-		width: 172px;
+		left: 764px;
+		width: 132px;
 		height: 48px;
 		display: inline-block;
 		font-size: 12px;
@@ -659,16 +668,17 @@
 /* Leaflet */
 
 	.leaflet {
-		position: relative;
+		position: fixed;
 		top: 0px;
 		left: 0px;
 		width: 50px;
 		height: 600px;
 		background-color: #9a3b47;
-		display: inline-block;
-		z-index: 100;
+		display: none;
+		z-index: 100; /* Set to 100 */
 		font: 'Montserrat';
 		font-family: 'Montserrat', sans-serif;
+		font-size: 12px;
 		color: #231f20;
 	}
 	.leaflet .static {
@@ -680,10 +690,7 @@
 		background-color: #9a3b47;
 		display: inline-block;
 	}
-	.leaflet .static .tspHead {
-		position: relative;
-		top: 275px;
-		left: -275px;
+	.leaflet .stem {
 		height: 15px;
 		width: 600px;
 		padding: 17px 0 17px 0;
@@ -695,52 +702,284 @@
 		transform: rotate(-90deg);
 		color: #FFFFFF;
 		display: inline-block;
+		z-index: 10;
+		font-size: 12px;
+		letter-spacing: 2px;
+		background-color: #9a3b47;
+		border-top: 1px solid #600922;
+	}
+	.leaflet .leaf {
+		color: #FFFFFF;
+	}
+	.leaflet .static .tspStem {
+		position: relative;
+		top: 275px;
+		left: -275px;
 	}
 	.leaflet .sliding {
 		position: relative;
 		top: -600px;
+		left: 50px;
 		display: inline-block;	
-		width: 50px;
+		width: 600px;
 		height: 600px;
 	}
-	.leaflet .sliding .tspHContent {
+	.leaflet .sliding .tspLeaf {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 500px;
+		height: 600px;
 		display: inline-block;
+		background: #600922;
 	}
-	.leaflet .sliding .siHead {
+	.leaflet .sliding .tspLeaf .tspHead {
 		position: relative;
-		top: 200px;
-		left: -234px;
-		height: 50px;
-		width: 600px;
-		text-align: center;
-		-webkit-transform: rotate(-90deg);
-		-moz-transform: rotate(-90deg);
-		-ms-transform: rotate(-90deg);
-		-o-transform: rotate(-90deg);
-		transform: rotate(-90deg);
-		color: #FFFFFF;
-		display: inline-block;
+		top: 0px;
+		left: 0px;
+		width: 500px;
+		height: 164px;
+		border-bottom: 2px solid #FFFFFF;
 	}
-	.leaflet .sliding .siContent {
-		display: inline-block;
-	}
-	.leaflet .sliding .eciHead {
+	.leaflet .sliding .tspLeaf .tspHead .tspHeader {
 		position: relative;
-		top: 200px;
-		left: -234px;
-		height: 50px;
-		width: 600px;
+		top: 150px;
+		margin: 0 auto;
+		width: 280px;
+		height: 20px;
+		border: 2px solid #FFFFFF;
+		background-color: #600922; 
 		text-align: center;
-		-webkit-transform: rotate(-90deg);
-		-moz-transform: rotate(-90deg);
-		-ms-transform: rotate(-90deg);
-		-o-transform: rotate(-90deg);
-		transform: rotate(-90deg);
+		letter-spacing: 2px;
+		font-size: 14px;
+		padding: 6px 0 0 0;
+	}
+	.leaflet .sliding .tspLeaf .content {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 500px;
+		height: 372px;
+	}
+	.leaflet .sliding .tspLeaf .content .copy {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		padding: 48px 46px 0 46px;
+		height: 352px;
+		width: 408px;
+		font-family: 'Lusitana';
+		font-size: 16px;
+		line-height: 22px;
+		font-weight: normal;
+	}
+	.leaflet .sliding .tspLeaf .content .copy a {
 		color: #FFFFFF;
+	}
+	.leaflet .sliding .tspLeaf .content .tspNext {
+		position: relative;
+		left: 396px;
+		width: 86px;
+		height: 20px;
+	}
+	.leaflet .sliding .tspLeaf .content .tspNext img {
+		position: relative;
+		top: 2px;
+	}
+	.leaflet .sliding .siStem {
+		position: absolute;
+		top: 275px;
+		left: 225px;
+	}
+	.leaflet .sliding .siLeaf {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 500px;
+		height: 600px;
+		display: inline-block;
+		background: #600922;
+		overflow: hidden;
+	}
+	.leaflet .sliding .siLeaf .slider {
+		position: relative;
+		top: 0px;
+		left: -500px;
+		width: 1000px;
+		height: 600px;
+	}
+	.leaflet .sliding .siLeaf .slider .si1 {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 500px;
+		height: 600px;
+	}
+	.leaflet .sliding .siLeaf .slider .si1 .siHead {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 500px;
+		height: 226px;
+		border-bottom: 2px solid #FFFFFF;
+	}
+	.leaflet .sliding .siLeaf .slider .si1 .siHead .siHeader {
+		position: relative;
+		top: 212px;
+		margin: 0 auto;
+		width: 280px;
+		height: 20px;
+		border: 2px solid #FFFFFF;
+		background-color: #600922; 
+		text-align: center;
+		letter-spacing: 2px;
+		font-size: 14px;
+		padding: 6px 0 0 0;
+	}
+	.leaflet .sliding .siLeaf .slider .si1 .content {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 500px;
+		height: 372px;
+	}
+	.leaflet .sliding .siLeaf .slider .si1 .content .copy {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		padding: 48px 60px 0 60px;
+		height: 282px;
+		width: 380px;
+		font-family: 'Lusitana';
+		font-size: 16px;
+		line-height: 22px;
+	}
+	.leaflet .sliding .siLeaf .slider .si1 .content .siNext {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		height: 42px;
+		width: 500px;
+	}
+	.leaflet .sliding .siLeaf .slider .si1 .content .siNext .button {
+		position: relative;
+		top: 0px;
+		left: 396px;
+		width: 86px;
+	}
+	.leaflet .sliding .siLeaf .slider .si1 .content .siNext .button img {
+		position: relative;
+		top: 2px;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 {
+		position: relative;
+		top: -600px;
+		left: 500px;
+		width: 500px;
+		height: 600px;
+		background-color: #FFFFFF;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siHead {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 500px;
+		height: 36px;
+		border-bottom: 2px solid #424142;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siHead .siHeader {
+		position: relative;
+		top: 20px;
+		margin: 0 auto;
+		width: 280px;
+		height: 20px;
+		border: 2px solid #424142;
+		background-color: #FFFFFF; 
+		text-align: center;
+		letter-spacing: 2px;
+		font-size: 14px;
+		color: #424142;
+		padding: 6px 0 0 0;
+		z-index: 10;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions {
+		position: absolute;
+		top: 38px;
+		left: 0px;
+		width: 249px;
+		height: 562px;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .header{
+		position: relative;
+		top: 0px;
+		margin: 28px auto 4px auto;
+		width: 108px;
+		height: 16px;
+		padding: 4px 0 0 0;
+		border: 2px solid #818385;
+		text-align: center;
+		color: #818385;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third {
+		height: 168px;
+		width: 249px;
+		border-right: 1px solid #818385;
+		border-bottom: 1px solid #818385;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third:nth-child(4) {
+		border-bottom: none;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siLevels {
+		position: absolute;
+		top: 38px;
+		left: 249px;
+		width: 250px;
+		height: 562px;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siLevels .header{
+		position: relative;
+		top: 0px;
+		margin: 28px auto 4px auto;
+		width: 108px;
+		height: 16px;
+		padding: 4px 0 0 0;
+		border: 2px solid #818385;
+		text-align: center;
+		color: #818385;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third {
+		height: 168px;
+		width: 249px;
+		border-left: 1px solid #818385;
+		border-bottom: 1px solid #818385;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third:nth-child(4) {
+		border-bottom: none;
+	}
+	.leaflet .sliding .eciStem {
+		position: absolute;
+		top: 275px;
+		left: 275px;
+	}
+	.leafletNav {
+		position: absolute;
+		top: 0px;
+		left: 762px;
+		width: 138px;
+		height: 48px;
+		display: inline-block;
+		color: #9a3b47;
+	}	
+	.leafletNav .button {
+		position: relative;
+		width: 60px;
 		display: inline-block;
 	}
-	.leaflet .sliding .eciContent {
-		display: inline-block;
+	.leafletNav .button:hover {
+		color: #814d4d;
+	}
+	.leafletNav .button:hover .s2-img1 {
+		background: url('../img/backcarrotsprite.png') 0 -15px;
 	}
 
 /* Images & Sprite Sheets */
