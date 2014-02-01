@@ -18,7 +18,7 @@
 		font: 'Lusitana';
 		font-family: 'Lusitana', serif;
 		color: #818385;
-		display: inline-block;
+		display: block;
 		overflow: hidden;
 	}
 	#slideshow {
@@ -49,8 +49,7 @@
 		height: 600px;
 		background-color: #818385;
 		opacity: .5;
-		display: none;
-		z-index: 10;
+		z-index: 100;
 	}
 	.head {
 		font: 'Montserrat';
@@ -114,7 +113,7 @@
 
 	.slide:nth-child(2) {
 		position: relative;
-		top: -75px;
+		top: -55px;
 		left: -2px;
 		font-family: 'Montserrat';
 		font-size: 12px;
@@ -232,8 +231,8 @@
 	}
 	.slide:nth-child(2) .content .center .dimensions .third:nth-child(2) .carrot2 {
 		position: relative;
-		top: -4px;
-		left: 68px;
+		top: -12px;
+		left: 70px;
 		transform: rotate(26deg);
 		-webkit-transform: rotate(26deg);
 		-moz-transform: rotate(26deg);
@@ -242,7 +241,7 @@
 	}
 	.slide:nth-child(2) .content .center .dimensions .third .ap {
 		position: relative;
-		top: 24px;
+		top: 12px;
 		left: 0px;
 	}
 	.slide:nth-child(2) .content .center .dimensions .third:nth-child(3) {
@@ -250,18 +249,18 @@
 	}
 	.slide:nth-child(2) .content .center .dimensions .third:nth-child(3) .carrot1 {
 		position: relative;
-		top: 50px;
+		top: 46px;
 		left: -54px;
 	}
 	.slide:nth-child(2) .content .center .dimensions .third:nth-child(3) .carrot2 {
 		position: relative;
-		top: -26px;
+		top: -40px;
 		left: 70px;
 		background-color: #FFFFFF;
 	}
 	.slide:nth-child(2) .content .center .dimensions .third .at {
 		position: relative;
-		top: 6px;
+		top: -6px;
 		left: 0px;
 	}
 	.slide:nth-child(2) .content .center .dimensions .third .at .title {
@@ -271,13 +270,13 @@
 	}
 	.slide:nth-child(2) .content .center .dimensions .third:nth-child(4) .carrot1 {
 		position: relative;
-		top: 92px;
+		top: 76px;
 		left: -56px;
 	}
 	.slide:nth-child(2) .content .center .dimensions .third:nth-child(4) .carrot2 {
 		position: relative;
-		top: -48px;
-		left: 66px;
+		top: -68px;
+		left: 70px;
 		transform: rotate(-26deg);
 		-webkit-transform: rotate(-26deg);
 		-moz-transform: rotate(-26deg);
@@ -286,12 +285,12 @@
 	}
 	.slide:nth-child(2) .content .center .dimensions .third .ck {
 		position: relative;
-		top: 22px;
+		top: 10px;
 		left: 0px;
 	}
 	.slide:nth-child(2) .content .center .levels {
 		position: relative;
-		top: -128px;
+		top: -141px;
 		left: -4px;
 		width: 168px;
 		height: 550px;
@@ -325,32 +324,32 @@
 	}
 	.slide:nth-child(2) .content .center .levels .icons .is {
 		position: relative;
-		top: 100px;
+		top: 102px;
 		left: -42px;
 
 	}
 	.slide:nth-child(2) .content .center .levels .icons .ss {
 		position: relative;
-		top: 100px;
+		top: 102px;
 		left: 42px;
 
 	}
 	.slide:nth-child(2) .content .center .levels .icons .dp {
 		position: relative;
-		top: 100px;
+		top: 102px;
 		left: -42px;
 
 	}
 	.slide:nth-child(2) .content .center .levels .icons .s2-img4 {
 		position: relative;
-		top: -18px;
-		left: 101px;
+		top: -19px;
+		left: 96px;
 	}
 	.slide:nth-child(2) .content .center .cycle {
 		position: absolute;
 		top: 0px;
 		left: 341px;
-		width: 440px;
+		width: 421px;
 		height: 550px;
 		border-left: 2px solid #424142;
 		display: inline-block;
@@ -372,6 +371,9 @@
 
 /* Slide 2 Modal */
 
+	.slide:nth-child(2) .tsMask {
+		display: none;
+	}
 	.slide:nth-child(2) .modal {
 		position: absolute;
 		top: 40px;
@@ -528,6 +530,9 @@
 
 /* Slide 3 Modal */
 
+	.slide:nth-child(2) .eicMask {
+		display: none;
+	}
 	.slide:nth-child(3) .modal {
 		position: absolute;
 		top: 178px;
@@ -668,14 +673,14 @@
 /* Leaflet */
 
 	.leaflet {
-		position: fixed;
+		position: absolute;
 		top: 0px;
 		left: 0px;
 		width: 50px;
 		height: 600px;
 		background-color: #9a3b47;
 		display: none;
-		z-index: 100; /* Set to 100 */
+		z-index: 1000; /* Set to 100 */
 		font: 'Montserrat';
 		font-family: 'Montserrat', sans-serif;
 		font-size: 12px;
@@ -687,7 +692,6 @@
 		left: 0px;
 		width: 50px;
 		height: 600px;
-		background-color: #9a3b47;
 		display: inline-block;
 	}
 	.leaflet .stem {
@@ -695,18 +699,23 @@
 		width: 600px;
 		padding: 17px 0 17px 0;
 		text-align: center;
-		-webkit-transform: rotate(-90deg);
-		-moz-transform: rotate(-90deg);
-		-ms-transform: rotate(-90deg);
-		-o-transform: rotate(-90deg);
-		transform: rotate(-90deg);
 		color: #FFFFFF;
 		display: inline-block;
 		z-index: 10;
 		font-size: 12px;
 		letter-spacing: 2px;
 		background-color: #9a3b47;
-		border-top: 1px solid #600922;
+		border-bottom: 1px solid #600922;
+		-webkit-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+		-webkit-transition: background-color .6s;
+		-moz-transition: background-color .6s;
+		-ms-transition: background-color .6s;
+		-o-transition: background-color .6s;
+		transition: background-color .6s;
 	}
 	.leaflet .leaf {
 		color: #FFFFFF;
@@ -715,14 +724,18 @@
 		position: relative;
 		top: 275px;
 		left: -275px;
+		background-color: #9a3b47;
+		cursor: pointer;
 	}
 	.leaflet .sliding {
 		position: relative;
 		top: -600px;
-		left: 50px;
+		left: -550px;
 		display: inline-block;	
 		width: 600px;
 		height: 600px;
+		z-index: 0;
+		overflow: hidden;
 	}
 	.leaflet .sliding .tspLeaf {
 		position: absolute;
@@ -732,6 +745,7 @@
 		height: 600px;
 		display: inline-block;
 		background: #600922;
+		z-index: 1000;
 	}
 	.leaflet .sliding .tspLeaf .tspHead {
 		position: relative;
@@ -794,17 +808,18 @@
 	.leaflet .sliding .siLeaf {
 		position: absolute;
 		top: 0px;
-		left: 0px;
+		left: 50px;
 		width: 500px;
 		height: 600px;
 		display: inline-block;
 		background: #600922;
+		z-index: 0;
 		overflow: hidden;
 	}
 	.leaflet .sliding .siLeaf .slider {
 		position: relative;
 		top: 0px;
-		left: -500px;
+		left: 0px;
 		width: 1000px;
 		height: 600px;
 	}
@@ -812,7 +827,7 @@
 		position: relative;
 		top: 0px;
 		left: 0px;
-		width: 500px;
+		width: 450px;
 		height: 600px;
 	}
 	.leaflet .sliding .siLeaf .slider .si1 .siHead {
@@ -863,8 +878,8 @@
 	}
 	.leaflet .sliding .siLeaf .slider .si1 .content .siNext .button {
 		position: relative;
-		top: 0px;
-		left: 396px;
+		top: 8px;
+		left: 398px;
 		width: 86px;
 	}
 	.leaflet .sliding .siLeaf .slider .si1 .content .siNext .button img {
@@ -948,23 +963,82 @@
 		color: #818385;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third {
-		height: 168px;
-		width: 249px;
 		border-left: 1px solid #818385;
 		border-bottom: 1px solid #818385;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third, .front, .back {
+		height: 168px;
+		width: 250px;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third:nth-child(4) {
 		border-bottom: none;
 	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper {
+		perspective: 10;
+		-webkit-perspective: 10;
+		-moz-perspective: 10;
+		-ms-perspective: 10;
+		-o-perspective: 10;
+		border: none;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third:hover .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third:hover .flipper {
+		transform: rotateY(180deg);
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper {
+		position: relative;
+		transition: 0.6s;
+		-webkit-transition: 0.6s;
+		-moz-transition: 0.6s;
+		-ms-transition: 0.6s;
+		-o-transition: 0.6s;
+		transform-style: preserve-3d;
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		-o-transform-style: preserve-3d;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front {
+		z-index: 100;
+		background-color: #FFFFFF;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .back, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .back {
+		transform: rotateY(180deg);
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
+		background-color: #600922;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .back, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .back {
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		-ms-backface-visibility: hidden;
+		-o-backface-visibility: hidden;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
 	.leaflet .sliding .eciStem {
 		position: absolute;
 		top: 275px;
-		left: 275px;
+		left: 175px;
+		z-index: -10;
+		cursor: pointer;
+		-webkit-transition: background-color .6s;
+		-moz-transition: background-color .6s;
+		-ms-transition: background-color .6s;
+		-o-transition: background-color .6s;
+		transition: background-color .6s;
 	}
 	.leafletNav {
 		position: absolute;
 		top: 0px;
-		left: 762px;
+		left: 759px;
 		width: 138px;
 		height: 48px;
 		display: inline-block;
@@ -1037,9 +1111,18 @@
 	}
 	.s2-img4 {
 		position: relative;
+		width: 25px;
+		height: 25px;
+		display: inline-block;
+		z-index: 10;
+		background: url('../img/carrotgreycircle.png') 0 0;
+	}
+	.s2-img4-2 {
+		position: relative;
 		width: 15px;
 		height: 15px;
 		display: inline-block;
+		z-index: 10;
 		background: url('../img/carrotgrey.png') 0 0;
 	}
 	.s2-img5 {
@@ -1069,7 +1152,7 @@
 	}
 	.s2-img11 {
 		position: relative;
-		top: 92px;
+		top: 94px;
 		left: 32px;
 		display: inline-block;
 	}
