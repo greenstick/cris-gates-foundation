@@ -49,7 +49,7 @@
 		height: 600px;
 		background-color: #818385;
 		opacity: .5;
-		z-index: 100;
+		z-index: 500;
 	}
 	.head {
 		font: 'Montserrat';
@@ -148,9 +148,9 @@
 		background: url('../img/backcarrotsprite.png') 0 -15px;
 	}
 	.slide:nth-child(2) .head .siHeader {
-		position: relative;
-		top: 22px;
-		left: -12px;
+		position: absolute;
+		top: 36px;
+		left: 102px;
 		height: 16px;
 		width: 176px;
 		padding-top: 4px;
@@ -161,9 +161,9 @@
 		z-index: 10;
 	}
 	.slide:nth-child(2) .head .eciHeader {
-		position: relative;
-		top: 22px;
-		left: 152px;
+		position: absolute;
+		top: 36px;
+		left: 472px;
 		height: 16px;
 		width: 240px;
 		padding-top: 4px;
@@ -300,7 +300,7 @@
 	}
 	.slide:nth-child(2) .content .center .levels .subhead {
 		position: relative;
-		top: -2px;
+		top: 0px;
 		left: 24px;
 		height: 92px;
 		width: 124px;
@@ -372,7 +372,7 @@
 /* Slide 2 Modal */
 
 	.slide:nth-child(2) .tsMask {
-		display: none;
+		display: block;
 	}
 	.slide:nth-child(2) .modal {
 		position: absolute;
@@ -380,14 +380,14 @@
 		left: 76px;
 		width: 748px;
 		height: 520px;
-		z-index: 10;
+		z-index: 1000;
 		border-radius: 28px 28px 28px 28px;
 		-webkit-border-radius: 28px 28px 28px 28px;
 		-moz-border-radius: 28px 28px 28px 28px;
 		-ms-border-radius: 28px 28px 28px 28px;
 		-o-border-radius: 28px 28px 28px 28px;
 		background-color: #FFFFFF;
-		display: none;
+		display: block;
 	}
 	.slide:nth-child(2) .modal .head {
 		position: relative;
@@ -447,7 +447,7 @@
 
 	.slide:nth-child(3) {
 		position: relative;
-		top: -32px;
+		top: -15px;
 		left: -4px;
 		font-family: 'Montserrat';
 		font-size: 12px;
@@ -483,8 +483,8 @@
 	}
 	.slide:nth-child(3) .head .eciHeader {
 		position: relative;
-		top: 22px;
-		left: 152px;
+		top: 36px;
+		left: 320px;
 		height: 16px;
 		width: 240px;
 		padding-top: 4px;
@@ -504,12 +504,14 @@
 	.slide:nth-child(3) .content .center {
 		position: relative;
 		top: 32px;
-		left: 178px;
+		left: 208px;
+		width: 472px;
+		height: 472px;
 	}
 	.slide:nth-child(3) .content .center .carrot {
 		position: relative;
-		top: -240px;
-		left: 134px;
+		top: -254px;
+		left: 572px;
 	}
 	.slide:nth-child(3) .content .right {
 		position: absolute;
@@ -530,7 +532,7 @@
 
 /* Slide 3 Modal */
 
-	.slide:nth-child(2) .eicMask {
+	.slide:nth-child(3) .eicMask {
 		display: none;
 	}
 	.slide:nth-child(3) .modal {
@@ -539,7 +541,7 @@
 		left: 168px;
 		width: 480px;
 		height: 280px;
-		z-index: 10;
+		z-index: 1000;
 		border-radius: 28px 28px 28px 28px;
 		-webkit-border-radius: 28px 28px 28px 28px;
 		-moz-border-radius: 28px 28px 28px 28px;
@@ -640,8 +642,8 @@
 	}
 	.slide:nth-child(4) .head .crHeader {
 		position: relative;
-		top: 140px;
-		left: 152px;
+		top: 146px;
+		left: 302px;
 		height: 24px;
 		width: 320px;
 		padding-top: 8px;
@@ -672,6 +674,15 @@
 
 /* Leaflet */
 
+	#leafletWrapper {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 50px;
+		height: 600px;
+		z-index: 100;  /* Set to 100 */
+		overflow: hidden;
+	}
 	.leaflet {
 		position: absolute;
 		top: 0px;
@@ -680,7 +691,6 @@
 		height: 600px;
 		background-color: #9a3b47;
 		display: none;
-		z-index: 1000; /* Set to 100 */
 		font: 'Montserrat';
 		font-family: 'Montserrat', sans-serif;
 		font-size: 12px;
@@ -804,6 +814,7 @@
 		position: absolute;
 		top: 275px;
 		left: 225px;
+		cursor: pointer;
 	}
 	.leaflet .sliding .siLeaf {
 		position: absolute;
@@ -1038,7 +1049,7 @@
 	.leafletNav {
 		position: absolute;
 		top: 0px;
-		left: 759px;
+		left: 762px;
 		width: 138px;
 		height: 48px;
 		display: inline-block;
