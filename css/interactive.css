@@ -2,14 +2,29 @@
 	html{
 		background-color: black;
 	}
-	#IMPLEMENTSUPPORTS path:hover, #MONITORPROGRESS path:hover, #ADJUSTSUPPORTS path:hover, #ANALYZERESULTS path:hover, #IDENTIFY path:hover, #PLAN path:hover {
-		fill: #600922;
+	.eicArc {
+		fill: #9a3b47;
 		cursor: pointer;
-	} 
+	}
+	.eicArc.selected path {
+		fill: #600922;
+	}
+	.eicArc.selected g g path {
+		fill: #FFFFFF;
+	}
 	#CONTEXTS:hover g path, #STATEPOLICY:hover g path, #COMMUNITY:hover g path, #HIGHEREDUCATION:hover g path, #LOCALPOLICY:hover g path, #RING:hover g path{
 		fill: #9a3b47;
 		cursor: pointer;
+	}
+	.eicHead g {
+		cursor: pointer;
+	}
+	.eicHead g path {
+		fill: #818385;
 	} 
+	.eicHead.selected g path {
+		fill: #9a3b47;
+	}
 	#interactiveWrapper {
 		position: relative;
 		margin: 0 auto;
@@ -30,20 +45,17 @@
 		display: inline-block;
 	}
 	.slide {
-		position: relative;
-		top: 0px;
-		left: 0px;
+		position: absolute;
 		width: 900px;
 		height: 600px;
 		background-color: #FFFFFF;
-		display: inline-block;
 	}
 	.slide.active {
 		/*background-color: azure;*/
 	}
 	.slide .mask {
-		position: relative;
-		top: -600px;
+		position: absolute;
+		top: 0px;
 		left: 0px;
 		width: 900px;
 		height: 600px;
@@ -81,19 +93,31 @@
 /* Slide 1 */
 
 	.slide:nth-child(1) {
+		top: 0px;
+		left: 0px;
 		font-size: 12px;
 		font-family: 'Montserrat', sans-serif;
 	}
 	.slide:nth-child(1) .head {
-		position: relative;
-		margin: 42px 42px 24px 42px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		height: 282px;
+		width: inherit;
+		margin: 42px auto 24px auto;
 		text-align: center;
 	}
 	.slide:nth-child(1) .content {
+		position: absolute;
+		width: 816px;
+		height: 294px;
+		top: 282px;
 		margin: 0 42px 24px 42px;
 		line-height: 22px;
 	}
-	.slide:nth-child(1) .button {
+	.slide:nth-child(1) .content .button {
+		position: relative;
+		top: 20px;
 		margin: 0 auto 24px auto;
 		text-align: center;
 		background-color: #9a3b47;
@@ -112,9 +136,8 @@
 /* Slide 2 */
 
 	.slide:nth-child(2) {
-		position: relative;
-		top: -55px;
-		left: -2px;
+		top: 0px;
+		left: 900px;
 		font-family: 'Montserrat';
 		font-size: 12px;
 		font-weight: bold;
@@ -371,13 +394,10 @@
 
 /* Slide 2 Modal */
 
-	.slide:nth-child(2) .tsMask {
-		display: block;
-	}
-	.slide:nth-child(2) .modal {
+	.slide:nth-child(2) .tspModal {
 		position: absolute;
-		top: 40px;
-		left: 76px;
+		top: 0px;
+		left: 1800px;
 		width: 748px;
 		height: 520px;
 		z-index: 1000;
@@ -389,13 +409,13 @@
 		background-color: #FFFFFF;
 		display: block;
 	}
-	.slide:nth-child(2) .modal .head {
+	.slide:nth-child(2) .tspModal .head {
 		position: relative;
 		width: 748px;
 		height: 216px;
 		border: none;
 	}
-	.slide:nth-child(2) .modal .head .row1 {
+	.slide:nth-child(2) .tspModal .head .row1 {
 		position: relative;
 		top: 0px;
 		left: 0px;
@@ -403,12 +423,12 @@
 		width: 748px;
 		padding: 24px 0 0 0;
 	}
-	.slide:nth-child(2) .modal .head .row2 {
+	.slide:nth-child(2) .tspModal .head .row2 {
 		position: relative;
 		height: 40px;
 		padding: 24px 0 24px 0;
 	}
-	.slide:nth-child(2) .modal .head .row2 .header {
+	.slide:nth-child(2) .tspModal .head .row2 .header {
 		position: relative;
 		margin: 0 auto;
 		width: 392px;
@@ -420,7 +440,7 @@
 		letter-spacing: 2px;
 		text-align: center;
 	}
-	.slide:nth-child(2) .modal .content {
+	.slide:nth-child(2) .tspModal .content {
 		position: relative;
 		height: 304px;
 		width: 698px;
@@ -430,7 +450,7 @@
 		font-weight: normal;
 		font-family: 'Lusitana', serif;
 	}
-	.slide:nth-child(2) .modal .content .button {
+	.slide:nth-child(2) .tspModal .content .button {
 		position: relative;
 		top: 20px;
 		left: 548px;
@@ -438,7 +458,7 @@
 		font-weight: bold;
 		letter-spacing: 1px;
 	}
-	.slide:nth-child(2) .modal .content .button img {
+	.slide:nth-child(2) .tspModal .content .button img {
 		position: relative;
 		top: 2px;
 	}
@@ -446,9 +466,8 @@
 /* Slide 3 */
 
 	.slide:nth-child(3) {
-		position: relative;
-		top: -15px;
-		left: -4px;
+		top: 0px;
+		left: 1800px;
 		font-family: 'Montserrat';
 		font-size: 12px;
 		font-weight: bold;
@@ -532,10 +551,7 @@
 
 /* Slide 3 Modal */
 
-	.slide:nth-child(3) .eicMask {
-		display: none;
-	}
-	.slide:nth-child(3) .modal {
+	.slide:nth-child(3) .eicModal {
 		position: absolute;
 		top: 178px;
 		left: 168px;
@@ -550,7 +566,7 @@
 		background-color: #FFFFFF;
 		display: none;
 	}
-	.slide:nth-child(3) .modal .head {
+	.slide:nth-child(3) .eicModal .head {
 		position: relative;
 		top: 0px;
 		width: 438px;
@@ -558,12 +574,12 @@
 		margin: 24px auto 0;
 		border: none;
 	}
-	.slide:nth-child(3) .modal .head .m2-img2 {
+	.slide:nth-child(3) .eicModal .head .m2-img2 {
 		position: relative;
 		top: 0px;
 		left: 416px;
 	}
-	.slide:nth-child(3) .modal .head .header {
+	.slide:nth-child(3) .eicModal .head .header {
 		position: relative;
 		top: 24px;
 		width: 392px;
@@ -576,7 +592,7 @@
 		letter-spacing: 2px;
 		text-align: center;
 	}
-	.slide:nth-child(3) .modal .content {
+	.slide:nth-child(3) .eicModal .content {
 		position: relative;
 		height: 138px;
 		width: 272px;
@@ -586,7 +602,7 @@
 		font-weight: normal;
 		font-family: 'Lusitana', serif;
 	}
-	.slide:nth-child(3) .modal .content .button {
+	.slide:nth-child(3) .eicModal .content .button {
 		position: relative;
 		top: 20px;
 		left: 548px;
@@ -594,7 +610,7 @@
 		font-weight: bold;
 		letter-spacing: 1px;
 	}
-	.slide:nth-child(3) .modal .content .button img {
+	.slide:nth-child(3) .eicModal .content .button img {
 		position: relative;
 		top: 2px;
 	}
@@ -602,9 +618,8 @@
 /* Slide 4 */
 
 	.slide:nth-child(4) {
-		position: relative;
-		top: -119px;
-		left: -6px;
+		top: 0px;
+		left: 2700px;
 		background-color: #9a3b47;
 	}
 	.slide:nth-child(4) a {
