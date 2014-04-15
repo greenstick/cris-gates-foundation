@@ -1,7 +1,10 @@
-/* Basic Styles */
-	html{
-		background-color: black;
-	}
+/*
+SVG Styles
+*/
+html {
+	background-color: grey;
+}
+
 	.eicArc {
 		fill: #9a3b47;
 		cursor: pointer;
@@ -12,7 +15,7 @@
 	.eicArc.selected g g path {
 		fill: #FFFFFF;
 	}
-	#CONTEXTS:hover g path, #STATEPOLICY:hover g path, #COMMUNITY:hover g path, #HIGHEREDUCATION:hover g path, #LOCALPOLICY:hover g path, #RING:hover g path{
+	#CONTEXTS:hover g path, #STATEPOLICY:hover g path, #COMMUNITY:hover g path, #HIGHEREDUCATION:hover g path, #LOCALPOLICY:hover g path, #RING.selected g path {
 		fill: #9a3b47;
 		cursor: pointer;
 	}
@@ -25,6 +28,11 @@
 	.eicHead.selected g path {
 		fill: #9a3b47;
 	}
+
+/* 
+Basic Styles
+*/
+
 	#interactiveWrapper {
 		position: relative;
 		margin: 0 auto;
@@ -50,10 +58,7 @@
 		height: 600px;
 		background-color: #FFFFFF;
 	}
-	.slide.active {
-		/*background-color: azure;*/
-	}
-	.slide .mask {
+	.mask {
 		position: absolute;
 		top: 0px;
 		left: 0px;
@@ -62,6 +67,7 @@
 		background-color: #818385;
 		opacity: .5;
 		z-index: 500;
+		display: none;
 	}
 	.head {
 		font: 'Montserrat';
@@ -501,7 +507,7 @@
 		background: url('../img/backcarrotsprite.png') 0 -15px;
 	}
 	.slide:nth-child(3) .head .eciHeader {
-		position: relative;
+		position: absolute;
 		top: 36px;
 		left: 320px;
 		height: 16px;
@@ -521,7 +527,7 @@
 		left: 0px;
 	}
 	.slide:nth-child(3) .content .center {
-		position: relative;
+		position: absolute;
 		top: 32px;
 		left: 208px;
 		width: 472px;
@@ -547,6 +553,88 @@
 		top: 246px;
 		text-align: center;
 		color: #FFFFFF;
+	}
+/* Slide 3 Info/Contexts */
+
+	.slide:nth-child(3) .context-bg {
+		position: absolute;
+		display: none;
+	}
+
+	.slide:nth-child(3) .context {
+		position: absolute;
+		width: 292px;
+		height: 292px;
+		top: 90px;
+		left: 88px;
+		z-index: 100;
+		color: #FFFFFF;
+		display: none;
+	}
+	.slide:nth-child(3) .context .infoExit {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		width: 20px;
+		height: 20px;
+		background: url('../img/exitblack_20.png');
+		cursor: pointer;
+		z-index: 10;
+	}
+	.slide:nth-child(3) .context .infoHead {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 292px;
+		height: 28px;
+		padding: 36px 0 0 0;
+		text-align: center;
+		font-size: 16px;
+	}
+	.slide:nth-child(3) .context .infoContent {
+		position: absolute;
+		top: 64px;
+		left: 0px;
+		height: 228px;
+		width: 292px;
+		line-height: 16px;
+		font-size: 14px;
+		font-weight: normal;
+		font-family: 'Lusitana', serif;
+	}
+	.slide:nth-child(3) .info {
+		position: absolute;
+		width: 208px;
+		height: 208px;
+		top: 132px;
+		left: 132px;
+		z-index: 100;
+		display: none;
+	}
+	.slide:nth-child(3) .info .infoHead {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 168px;
+		height: 28px;
+		padding: 24px 20px;
+		text-align: center;
+		font-size: 16px;
+		color: #9a3b47;
+		line-height: 20px
+	}
+	.slide:nth-child(3) .info .infoContent {
+		position: absolute;
+		top: 76px;
+		left: 0px;
+		width: 208px;
+		height: 132px;
+		line-height: 16px;
+		font-size: 14px;
+		font-weight: normal;
+		font-family: 'Lusitana', serif;
+		color: #424142;
+		letter-spacing: 0px;
 	}
 
 /* Slide 3 Modal */
@@ -687,7 +775,117 @@
 		font-weight: normal;
 	}
 
-/* Leaflet */
+/* Images & Sprite Sheets */
+
+	.s1-img1 {
+		position: relative;
+	}
+	.s1-img2 {
+		position: relative;
+		top: 3px;
+		left: 8px;
+	}
+	.m1-img1 {
+		position: relative;
+		top: 0px;
+		left: 324px;
+	}
+	.m1-img2 {
+		position: relative;
+		top: -80px;
+		left: 600px;
+	}
+	.s2-img1 {
+		position: relative;
+		top: 3px;
+		width: 15px;
+		height: 15px;
+		display: inline-block;
+		background: url('../img/backcarrotsprite.png') 0 0;
+	}
+	.s2-img1:hover {
+		background: url('../img/backcarrotsprite.png') 0 -15px;
+	}
+	.s2-img2 {
+		position: relative;
+		top: 10px;
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		background: url('../img/cycleiconsprite_30.png') 0 0;
+	}
+	.s2-img2:hover {
+		background: url('../img/cycleiconsprite_30.png') 0 -30px;
+	}
+	.s2-img3 {
+		position: relative;
+		top: 10px;
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		background: url('../img/logoiconsprite_30.png') 0 0;
+	}
+	.s2-img3:hover {
+		background: url('../img/logoiconsprite_30.png') 0 -30px;
+	}
+	.s2-img4 {
+		position: relative;
+		width: 25px;
+		height: 25px;
+		display: inline-block;
+		z-index: 10;
+		background: url('../img/carrotgreycircle.png') 0 0;
+	}
+	.s2-img4-2 {
+		position: relative;
+		width: 15px;
+		height: 15px;
+		display: inline-block;
+		z-index: 10;
+		background: url('../img/carrotgrey.png') 0 0;
+	}
+	.s2-img5 {
+		position: relative;
+		margin-bottom: 4px;
+	}
+	.s2-img6 {
+		position: relative;	
+		top: 16px;
+		margin-bottom: 4px;
+	}
+	.s2-img7 {
+		position: relative;
+		margin-bottom: 4px;
+	}
+	.s2-img8 {
+		position: relative;
+		margin-bottom: 4px;
+	}
+	.s2-img9 {
+		position: relative;
+		margin-bottom: 4px;
+	}
+	.s2-img10 {
+		position: relative;
+		margin-bottom: 4px;
+	}
+	.s2-img11 {
+		position: relative;
+		top: 94px;
+		left: 32px;
+		display: inline-block;
+	}
+	.s4-img1 {
+		position: relative;
+		top: 10px;
+		left: 0px;
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		background: url('../img/refreshiconsprite_30.png') 0 0;
+	}
+
+	/* Leaflet */
 
 	#leafletWrapper {
 		position: fixed;
@@ -961,7 +1159,7 @@
 		text-align: center;
 		color: #818385;
 	}
-	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third {
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third {
 		height: 168px;
 		width: 249px;
 		border-right: 1px solid #818385;
@@ -991,28 +1189,30 @@
 	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third {
 		border-left: 1px solid #818385;
 		border-bottom: 1px solid #818385;
-	}
-	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third, .front, .back {
-		height: 168px;
-		width: 250px;
+		cursor: pointer;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third:nth-child(4) {
 		border-bottom: none;
 	}
-	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper {
-		perspective: 10;
-		-webkit-perspective: 10;
-		-moz-perspective: 10;
-		-ms-perspective: 10;
-		-o-perspective: 10;
-		border: none;
+	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .back {
+		height: 168px;
+		width: 250px;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		-ms-backface-visibility: hidden;
+		-o-backface-visibility: hidden;
+		position: absolute;
+		top: 0px;
+		left: 0px;
 	}
-	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third:hover .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third:hover .flipper {
-		transform: rotateY(180deg);
-		-webkit-transform: rotateY(180deg);
-		-moz-transform: rotateY(180deg);
-		-ms-transform: rotateY(180deg);
-		-o-transform: rotateY(180deg);
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper {
+		perspective: 800;
+		-webkit-perspective: 800;
+		-moz-perspective: 800;
+		-ms-perspective: 800;
+		-o-perspective: 800;
+		border: none;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper {
 		position: relative;
@@ -1026,6 +1226,13 @@
 		-moz-transform-style: preserve-3d;
 		-ms-transform-style: preserve-3d;
 		-o-transform-style: preserve-3d;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third:hover .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third:hover .flipper {
+		transform: rotateY(180deg);
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front {
 		z-index: 100;
@@ -1048,6 +1255,12 @@
 		position: absolute;
 		top: 0px;
 		left: 0px;
+	}
+	.leaflet .l1, .leaflet .l2, .leaflet .l3 {
+		display: none;
+	}
+	.leaflet .l1.show, .leaflet .l2.show, .leaflet .l3.show {
+		display: block;
 	}
 	.leaflet .sliding .eciStem {
 		position: absolute;
@@ -1080,114 +1293,4 @@
 	}
 	.leafletNav .button:hover .s2-img1 {
 		background: url('../img/backcarrotsprite.png') 0 -15px;
-	}
-
-/* Images & Sprite Sheets */
-
-	.s1-img1 {
-		position: relative;
-	}
-	.s1-img2 {
-		position: relative;
-		top: 3px;
-		left: 8px;
-	}
-	.m1-img1 {
-		position: relative;
-		top: 0px;
-		left: 324px;
-	}
-	.m1-img2 {
-		position: relative;
-		top: -80px;
-		left: 600px;
-	}
-	.s2-img1 {
-		position: relative;
-		top: 3px;
-		width: 15px;
-		height: 15px;
-		display: inline-block;
-		background: url('../img/backcarrotsprite.png') 0 0;
-	}
-	.s2-img1:hover {
-		background: url('../img/backcarrotsprite.png') 0 -15px;
-	}
-	.s2-img2 {
-		position: relative;
-		top: 10px;
-		width: 30px;
-		height: 30px;
-		display: inline-block;
-		background: url('../img/cycleiconsprite_30.png') 0 0;
-	}
-	.s2-img2:hover {
-		background: url('../img/cycleiconsprite_30.png') 0 -30px;
-	}
-	.s2-img3 {
-		position: relative;
-		top: 10px;
-		width: 30px;
-		height: 30px;
-		display: inline-block;
-		background: url('../img/logoiconsprite_30.png') 0 0;
-	}
-	.s2-img3:hover {
-		background: url('../img/logoiconsprite_30.png') 0 -30px;
-	}
-	.s2-img4 {
-		position: relative;
-		width: 25px;
-		height: 25px;
-		display: inline-block;
-		z-index: 10;
-		background: url('../img/carrotgreycircle.png') 0 0;
-	}
-	.s2-img4-2 {
-		position: relative;
-		width: 15px;
-		height: 15px;
-		display: inline-block;
-		z-index: 10;
-		background: url('../img/carrotgrey.png') 0 0;
-	}
-	.s2-img5 {
-		position: relative;
-		margin-bottom: 4px;
-	}
-	.s2-img6 {
-		position: relative;	
-		top: 16px;
-		margin-bottom: 4px;
-	}
-	.s2-img7 {
-		position: relative;
-		margin-bottom: 4px;
-	}
-	.s2-img8 {
-		position: relative;
-		margin-bottom: 4px;
-	}
-	.s2-img9 {
-		position: relative;
-		margin-bottom: 4px;
-	}
-	.s2-img10 {
-		position: relative;
-		margin-bottom: 4px;
-	}
-	.s2-img11 {
-		position: relative;
-		top: 94px;
-		left: 32px;
-		display: inline-block;
-	}
-	.s4-img1 {
-		position: relative;
-		top: 10px;
-		left: 0px;
-		width: 30px;
-		height: 30px;
-		display: inline-block;
-		background: url('../img/refreshiconsprite_30.png') 0 0;
 	}
