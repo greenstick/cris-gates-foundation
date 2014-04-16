@@ -15,9 +15,8 @@ html {
 	.eicArc.selected g g path {
 		fill: #FFFFFF;
 	}
-	#CONTEXTS:hover g path, #STATEPOLICY:hover g path, #COMMUNITY:hover g path, #HIGHEREDUCATION:hover g path, #LOCALPOLICY:hover g path, #RING.selected g path {
+	#CONTEXTS.hover g path, #STATEPOLICY.hover g path, #COMMUNITY.hover g path, #HIGHEREDUCATION.hover g path, #LOCALPOLICY.hover g path, #RING.hover g path {
 		fill: #9a3b47;
-		cursor: pointer;
 	}
 	.eicHead g {
 		cursor: pointer;
@@ -27,6 +26,13 @@ html {
 	} 
 	.eicHead.selected g path {
 		fill: #9a3b47;
+	}
+	#CONTEXTS_button {
+		position: absolute;
+		top: 10px;
+		left: 182px;
+		width: 100px;
+		height: 20px;
 	}
 
 /* 
@@ -66,7 +72,7 @@ Basic Styles
 		height: 600px;
 		background-color: #818385;
 		opacity: .5;
-		z-index: 500;
+		z-index: 50;
 		display: none;
 	}
 	.head {
@@ -75,6 +81,7 @@ Basic Styles
 		color: #231f20;
 	}
 	.nav {
+		z-index: 9999;
 		color: #9a3b47;
 	}
 	.icon {
@@ -577,7 +584,7 @@ Basic Styles
 		right: 8px;
 		width: 20px;
 		height: 20px;
-		background: url('../img/exitblack_20.png');
+		background: url('../img/exitwhite_20.png');
 		cursor: pointer;
 		z-index: 10;
 	}
@@ -601,6 +608,26 @@ Basic Styles
 		font-size: 14px;
 		font-weight: normal;
 		font-family: 'Lusitana', serif;
+	}
+	.slide:nth-child(3) .context .n {
+		position: absolute;
+		top: 252px;
+		left: 176px;
+		cursor: pointer;
+	}
+	.slide:nth-child(3) .context .p {
+		position: absolute;
+		top: 252px;
+		left: 96px;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		transform: rotate(180deg);
+		cursor: pointer;
+	}
+	.CONTEXTS.context .s2-img4.n, .LOCALPOLICY.context .s2-img4.p {
+		left: 136px;
 	}
 	.slide:nth-child(3) .info {
 		position: absolute;
@@ -723,7 +750,7 @@ Basic Styles
 		color: #FFFFFF;
 	}
 	.slide:nth-child(4) .head .nav {
-		position: relative;
+		position: absolute;
 		top: 0px;
 		left: 764px;
 		width: 132px;
@@ -801,7 +828,7 @@ Basic Styles
 		width: 15px;
 		height: 15px;
 		display: inline-block;
-		background: url('../img/backcarrotsprite.png') 0 0;
+		background: url('../img/backcarrotsprite.png');
 	}
 	.s2-img1:hover {
 		background: url('../img/backcarrotsprite.png') 0 -15px;
@@ -812,7 +839,7 @@ Basic Styles
 		width: 30px;
 		height: 30px;
 		display: inline-block;
-		background: url('../img/cycleiconsprite_30.png') 0 0;
+		background: url('../img/cycleiconsprite_30.png');
 	}
 	.s2-img2:hover {
 		background: url('../img/cycleiconsprite_30.png') 0 -30px;
@@ -823,7 +850,7 @@ Basic Styles
 		width: 30px;
 		height: 30px;
 		display: inline-block;
-		background: url('../img/logoiconsprite_30.png') 0 0;
+		background: url('../img/logoiconsprite_30.png');
 	}
 	.s2-img3:hover {
 		background: url('../img/logoiconsprite_30.png') 0 -30px;
@@ -834,7 +861,7 @@ Basic Styles
 		height: 25px;
 		display: inline-block;
 		z-index: 10;
-		background: url('../img/carrotgreycircle.png') 0 0;
+		background: url('../img/carrotgreycircle.png');
 	}
 	.s2-img4-2 {
 		position: relative;
@@ -842,7 +869,7 @@ Basic Styles
 		height: 15px;
 		display: inline-block;
 		z-index: 10;
-		background: url('../img/carrotgrey.png') 0 0;
+		background: url('../img/carrotgrey.png');
 	}
 	.s2-img5 {
 		position: relative;
@@ -1032,10 +1059,11 @@ Basic Styles
 	.leaflet .sliding .siLeaf {
 		position: absolute;
 		top: 0px;
-		left: 50px;
+		left: 49px;
 		width: 500px;
 		height: 600px;
 		display: inline-block;
+		border: 1px solid #9a3b47;
 		background: #600922;
 		z-index: 0;
 		overflow: hidden;
@@ -1164,6 +1192,7 @@ Basic Styles
 		width: 249px;
 		border-right: 1px solid #818385;
 		border-bottom: 1px solid #818385;
+		cursor: pointer;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third:nth-child(4) {
 		border-bottom: none;
@@ -1189,12 +1218,11 @@ Basic Styles
 	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third {
 		border-left: 1px solid #818385;
 		border-bottom: 1px solid #818385;
-		cursor: pointer;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third:nth-child(4) {
 		border-bottom: none;
 	}
-	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .back {
+	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .back, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .front, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .back {
 		height: 168px;
 		width: 250px;
 		backface-visibility: hidden;
@@ -1245,6 +1273,7 @@ Basic Styles
 		-ms-transform: rotateY(180deg);
 		-o-transform: rotateY(180deg);
 		background-color: #600922;
+		overflow: auto;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .back, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .back {
 		backface-visibility: hidden;
@@ -1255,6 +1284,57 @@ Basic Styles
 		position: absolute;
 		top: 0px;
 		left: 0px;
+		color: #FFFFFFs;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front .icon, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front .icon {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 249px;
+		height: 70px;
+		padding: 42px 0 0 0;
+		text-align: center;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front .head, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front .head {
+		position: absolute;
+		top: 112px;
+		left: 0px;
+		width: 249px;
+		height: 56px;
+		text-align: center;
+		color: #818385;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .back .head, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .back .head {
+		position: absolute;
+		top: 0px;
+		left: 80px;
+		width: 149px;
+		height: 50px;
+		padding: 14px 20px 0 0;
+		color: #FFFFFF;
+		font-size: 12px;
+		line-height: 18px;
+		letter-spacing: 1px;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .back .icon, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .back .icon {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 80px;
+		height: 52px;
+		padding: 12px 0 0 0;
+		text-align: center;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .back .content, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .back .content {
+		position: absolute;
+		top: 64px;
+		left: 0px;
+		width: 210px;
+		height: auto;
+		padding: 0 20px 12px 20px;
+		font-family: 'Lusitana';
+		font-size: 12px;
+		line-height: 16px;
 	}
 	.leaflet .l1, .leaflet .l2, .leaflet .l3 {
 		display: none;
@@ -1294,3 +1374,49 @@ Basic Styles
 	.leafletNav .button:hover .s2-img1 {
 		background: url('../img/backcarrotsprite.png') 0 -15px;
 	}
+
+	/*
+	Scroll Bar
+	*/
+
+	.ps-container {
+		display: block;
+		visibility: visible;
+	}
+	.ps-container .ps-scrollbar-y-rail {
+	    position: absolute; /* please don't change 'position' */
+	    right: 0px; /* there must be 'right' for ps-scrollbar-y-rail */
+	    width: 9px;
+	    opacity: 1;
+	    filter: alpha(opacity = 0);
+	    display: block;
+	    visibility: visible;
+	    cursor: pointer;
+	}
+	.ps-container .ps-scrollbar-y-rail.in-scrolling {
+	    opacity: 1;
+	    filter: alpha(opacity = 0);
+	    display: block;
+	    visibility: visible;
+	}
+	.ps-container .ps-scrollbar-y {
+	    position: absolute; /* please don't change 'position' */
+	    right: 1px; /* there must be 'right' for ps-scrollbar-y */
+	    width: 7px;
+	    display: block;
+	    visibility: visible;
+	}
+	.ps-container.ie6 .ps-scrollbar-y {
+	    font-size: 0; /* fixed scrollbar height in xp sp3 ie6 */
+	    cursor: pointer;
+	    display: block;
+	    visibility: visible;
+	}
+	.ps-container .ps-scrollbar-y-rail:hover .ps-scrollbar-y,
+	.ps-container .ps-scrollbar-y-rail.hover .ps-scrollbar-y {
+	    background-color: #9a3b47;
+	    cursor: pointer;
+	    display: block;
+	    visibility: visible;
+	}
+
