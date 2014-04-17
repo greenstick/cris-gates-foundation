@@ -5,26 +5,23 @@ html {
 	background-color: grey;
 }
 
-	.eicArc {
+	.eciArc {
 		fill: #9a3b47;
 		cursor: pointer;
 	}
-	.eicArc.selected path {
+	.eciArc.selected path {
 		fill: #600922;
 	}
-	.eicArc.selected g g path {
+	.eciArc.selected g g path {
 		fill: #FFFFFF;
 	}
 	#CONTEXTS.hover g path, #STATEPOLICY.hover g path, #COMMUNITY.hover g path, #HIGHEREDUCATION.hover g path, #LOCALPOLICY.hover g path, #RING.hover g path {
 		fill: #9a3b47;
 	}
-	.eicHead g {
-		cursor: pointer;
-	}
-	.eicHead g path {
+	.eciHead g path {
 		fill: #818385;
 	} 
-	.eicHead.selected g path {
+	.eciHead.selected g path {
 		fill: #9a3b47;
 	}
 	#CONTEXTS_button {
@@ -178,7 +175,7 @@ Basic Styles
 		display: inline-block;
 	}
 	.slide:nth-child(2) .head .nav .button:hover {
-		color: #814d4d;
+		color: #9a3b47;
 	}
 	.slide:nth-child(2) .head .nav .button:hover .s2-img1 {
 		background: url('../img/backcarrotsprite.png') 0 -15px;
@@ -407,10 +404,10 @@ Basic Styles
 
 /* Slide 2 Modal */
 
-	.slide:nth-child(2) .tspModal {
+	.tspModal {
 		position: absolute;
-		top: 0px;
-		left: 1800px;
+		top: 40px;
+		left: 976px;
 		width: 748px;
 		height: 520px;
 		z-index: 1000;
@@ -420,15 +417,15 @@ Basic Styles
 		-ms-border-radius: 28px 28px 28px 28px;
 		-o-border-radius: 28px 28px 28px 28px;
 		background-color: #FFFFFF;
-		display: block;
+		display: none;
 	}
-	.slide:nth-child(2) .tspModal .head {
+	.tspModal .head {
 		position: relative;
 		width: 748px;
 		height: 216px;
 		border: none;
 	}
-	.slide:nth-child(2) .tspModal .head .row1 {
+	.tspModal .head .row1 {
 		position: relative;
 		top: 0px;
 		left: 0px;
@@ -436,12 +433,12 @@ Basic Styles
 		width: 748px;
 		padding: 24px 0 0 0;
 	}
-	.slide:nth-child(2) .tspModal .head .row2 {
+	.tspModal .head .row2 {
 		position: relative;
 		height: 40px;
 		padding: 24px 0 24px 0;
 	}
-	.slide:nth-child(2) .tspModal .head .row2 .header {
+	.tspModal .head .row2 .header {
 		position: relative;
 		margin: 0 auto;
 		width: 392px;
@@ -453,7 +450,7 @@ Basic Styles
 		letter-spacing: 2px;
 		text-align: center;
 	}
-	.slide:nth-child(2) .tspModal .content {
+	.tspModal .content {
 		position: relative;
 		height: 304px;
 		width: 698px;
@@ -463,15 +460,17 @@ Basic Styles
 		font-weight: normal;
 		font-family: 'Lusitana', serif;
 	}
-	.slide:nth-child(2) .tspModal .content .button {
+	.tspModal .content .button {
 		position: relative;
 		top: 20px;
 		left: 548px;
+		height: 40px;
+		width: 140px;
 		font-size: 14px;
 		font-weight: bold;
 		letter-spacing: 1px;
 	}
-	.slide:nth-child(2) .tspModal .content .button img {
+	.tspModal .content .button img {
 		position: relative;
 		top: 2px;
 	}
@@ -508,7 +507,7 @@ Basic Styles
 		display: inline-block;
 	}
 	.slide:nth-child(3) .head .nav .button:hover {
-		color: #814d4d;
+		color: #9a3b47;
 	}
 	.slide:nth-child(3) .head .nav .button:hover .s2-img1 {
 		background: url('../img/backcarrotsprite.png') 0 -15px;
@@ -574,7 +573,7 @@ Basic Styles
 		height: 292px;
 		top: 90px;
 		left: 88px;
-		z-index: 100;
+		z-index: 10;
 		color: #FFFFFF;
 		display: none;
 	}
@@ -635,7 +634,7 @@ Basic Styles
 		height: 208px;
 		top: 132px;
 		left: 132px;
-		z-index: 100;
+		z-index: 10;
 		display: none;
 	}
 	.slide:nth-child(3) .info .infoHead {
@@ -666,13 +665,14 @@ Basic Styles
 
 /* Slide 3 Modal */
 
-	.slide:nth-child(3) .eicModal {
+	.eciModal {
 		position: absolute;
-		top: 178px;
-		left: 168px;
+		top: 50%;
+		left: 2010px;
 		width: 480px;
 		height: 280px;
 		z-index: 1000;
+		margin: -140px 0 0 0;
 		border-radius: 28px 28px 28px 28px;
 		-webkit-border-radius: 28px 28px 28px 28px;
 		-moz-border-radius: 28px 28px 28px 28px;
@@ -681,7 +681,7 @@ Basic Styles
 		background-color: #FFFFFF;
 		display: none;
 	}
-	.slide:nth-child(3) .eicModal .head {
+	.eciModal .head {
 		position: relative;
 		top: 0px;
 		width: 438px;
@@ -689,12 +689,12 @@ Basic Styles
 		margin: 24px auto 0;
 		border: none;
 	}
-	.slide:nth-child(3) .eicModal .head .m2-img2 {
+	.eciModal .head .m2-img2 {
 		position: relative;
 		top: 0px;
 		left: 416px;
 	}
-	.slide:nth-child(3) .eicModal .head .header {
+	.eciModal .head .header {
 		position: relative;
 		top: 24px;
 		width: 392px;
@@ -707,7 +707,7 @@ Basic Styles
 		letter-spacing: 2px;
 		text-align: center;
 	}
-	.slide:nth-child(3) .eicModal .content {
+	.eciModal .content {
 		position: relative;
 		height: 138px;
 		width: 272px;
@@ -717,7 +717,7 @@ Basic Styles
 		font-weight: normal;
 		font-family: 'Lusitana', serif;
 	}
-	.slide:nth-child(3) .eicModal .content .button {
+	.eciModal .content .button {
 		position: relative;
 		top: 20px;
 		left: 548px;
@@ -725,7 +725,7 @@ Basic Styles
 		font-weight: bold;
 		letter-spacing: 1px;
 	}
-	.slide:nth-child(3) .eicModal .content .button img {
+	.eciModal .content .button img {
 		position: relative;
 		top: 2px;
 	}
@@ -765,7 +765,7 @@ Basic Styles
 		color: #FFFFFF;
 	}
 	.slide:nth-child(4) .head .nav .button:hover {
-		color: #814d4d;
+		color: #9a3b47;
 	}
 	.slide:nth-child(4) .head .nav .button:hover .s4-img1 {
 		background: url('../img/refreshiconsprite_30.png') 0 -30px;
@@ -1056,6 +1056,26 @@ Basic Styles
 		left: 225px;
 		cursor: pointer;
 	}
+	.leaflet .sliding .siStem img:nth-child(1) {
+		position: absolute;
+		top: 10px;
+		left: 444px;
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		transform: rotate(90deg);
+	}
+	.leaflet .sliding .siStem img:nth-child(2) {
+		position: absolute;
+		top: 10px;
+		left: 404px;
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		transform: rotate(90deg);
+	}
 	.leaflet .sliding .siLeaf {
 		position: absolute;
 		top: 0px;
@@ -1255,7 +1275,7 @@ Basic Styles
 		-ms-transform-style: preserve-3d;
 		-o-transform-style: preserve-3d;
 	}
-	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third:hover .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third:hover .flipper {
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third:hover .flipper, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third.selected .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third:hover .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third.selected .flipper {
 		transform: rotateY(180deg);
 		-webkit-transform: rotateY(180deg);
 		-moz-transform: rotateY(180deg);
@@ -1336,10 +1356,10 @@ Basic Styles
 		font-size: 12px;
 		line-height: 16px;
 	}
-	.leaflet .l1, .leaflet .l2, .leaflet .l3 {
+	.leaflet .dynamicLevel {
 		display: none;
 	}
-	.leaflet .l1.show, .leaflet .l2.show, .leaflet .l3.show {
+	.leaflet .dynamicLevel.show {
 		display: block;
 	}
 	.leaflet .sliding .eciStem {
@@ -1369,14 +1389,14 @@ Basic Styles
 		display: inline-block;
 	}
 	.leafletNav .button:hover {
-		color: #814d4d;
+		color: #9a3b47;
 	}
 	.leafletNav .button:hover .s2-img1 {
 		background: url('../img/backcarrotsprite.png') 0 -15px;
 	}
 
 	/*
-	Scroll Bar
+	Leaflet Scroll Bar Styles
 	*/
 
 	.ps-container {

@@ -31,18 +31,18 @@
 						</div>
 						<div class="content">
 							<div class="copy">
-								Prior to the selection of indicators, the district identifies its<br>
-								college readiness goals and how they might differ for<br>
-								different groups of students (e.g. by achievement level). It<br>
-								taks stock of its available resources, challenges, and needs<br>
-								and prioritizes actions to take. A parallel process occurs at the<br>
-								school level, where each school takes stock of the<br>
-								demographics and achievement of their current and prior<br>
-								population of students and related needs and prioritizes<br>
-								actions. With this information, the district or school can<br>
-								proceed with the selection of indicators in each college<br>
-								readiness dimension and at each level. <a href="" target="_blank">The CRIS District<br>
-								Self-Assessment Tool provides guidance to districts engaging<br>
+								Prior to the selection of indicators, the district identifies its<br />
+								college readiness goals and how they might differ for<br />
+								different groups of students (e.g. by achievement level). It<br />
+								taks stock of its available resources, challenges, and needs<br />
+								and prioritizes actions to take. A parallel process occurs at the<br />
+								school level, where each school takes stock of the<br />
+								demographics and achievement of their current and prior<br />
+								population of students and related needs and prioritizes<br />
+								actions. With this information, the district or school can<br />
+								proceed with the selection of indicators in each college<br />
+								readiness dimension and at each level. <a href="" target="_blank">The CRIS District<br />
+								Self-Assessment Tool provides guidance to districts engaging<br />
 								in this process.</a>
 							</div>
 							<div class="tspNext">
@@ -55,6 +55,12 @@
 					</div>
 					<div class="siStem stem">
 						SELECT INDICATORS
+						<!-- ko if: leaflet.dimension() != null -->
+						<img data-bind="attr: {'src': 'img/' + leaflet.dimension() + '_30.png'}" />
+						<!-- /ko -->
+						<!-- ko if: leaflet.level() != null -->
+						<img data-bind="attr: {'src': 'img/' + leaflet.level() + '_30.png'}" />
+						<!-- /ko -->
 					</div>
 					<div class="siLeaf leaf">
 						<div class="slider">
@@ -66,11 +72,11 @@
 								</div>
 								<div class="content">
 									<div class="copy">
-										Schools and districts next select indicators in each<br>
-										college readiness dimension and at each level. Three<br>
-										CRIS products can help with this step; see the Menu of<br>
-										College Readiness Indicators, and Supports, Selecting<br>
-										Effective Indicators, and A Technical Guide to College<br>
+										Schools and districts next select indicators in each<br />
+										college readiness dimension and at each level. Three<br />
+										CRIS products can help with this step; see the Menu of<br />
+										College Readiness Indicators, and Supports, Selecting<br />
+										Effective Indicators, and A Technical Guide to College<br />
 										Readiness Indicators for more information.
 									</div>
 									<div class="siNext">
@@ -89,7 +95,7 @@
 								</div>
 								<div class="siDimensions">
 									<div class="header">DIMENSIONS</div>
-									<div class="third">
+									<div class="third dimension" data-dimension="academicpreparation">
 										<div class="flipper">
 											<div class="front">
 												<div class="icon">
@@ -115,7 +121,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="third">
+									<div class="third dimension" data-dimension="academictenacity">
 										<div class="flipper">
 											<div class="front">
 												<div class="icon">
@@ -140,7 +146,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="third">
+									<div class="third dimension" data-dimension="collegeknowledge">
 										<div class="flipper">
 											<div class="front">
 												<div class="icon">
@@ -170,8 +176,8 @@
 								</div>
 								<div class="siLevels">
 									<div class="header">LEVELS</div>
-									<div class="l1 show">
-										<div class="third">
+									<div class="academicpreparation dynamicLevel show">
+										<div class="third level" data-level="individualstudent">
 											<div class="flipper">
 												<div class="front">
 													<div class="icon">
@@ -206,7 +212,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="third">
+										<div class="third level" data-level="school">
 											<div class="flipper">
 												<div class="front">
 													<div class="icon">
@@ -241,7 +247,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="third">
+										<div class="third level" data-level="district">
 											<div class="flipper">
 												<div class="front">
 													<div class="icon">
@@ -272,15 +278,15 @@
 														<ul>
 															<li>Student/teacher assignment policies</li>
 															<li>Advanced Placement coursework availability at X schools</li>
-															<li>Availabilyt/evaluation of academic supports</li>
+															<li>Availability/evaluation of academic supports</li>
 														</ul>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="l2">
-										<div class="third">
+									<div class="academictenacity dynamicLevel">
+										<div class="third level" data-level="individualstudent">
 											<div class="flipper">
 												<div class="front">
 													<div class="icon">
@@ -317,7 +323,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="third">
+										<div class="third level" data-level="school">
 											<div class="flipper">
 												<div class="front">
 													<div class="icon">
@@ -351,7 +357,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="third">
+										<div class="third level"  data-level="district">
 											<div class="flipper">
 												<div class="front">
 													<div class="icon">
@@ -387,8 +393,8 @@
 											</div>
 										</div>
 									</div>
-									<div class="l3">
-										<div class="third">
+									<div class="collegeknowledge dynamicLevel">
+										<div class="third level" data-level="individualstudent">
 											<div class="flipper">
 												<div class="front">
 													<div class="icon">
@@ -424,7 +430,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="third">
+										<div class="third level" data-level="school">
 											<div class="flipper">
 												<div class="front">
 													<div class="icon">
@@ -459,7 +465,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="third">
+										<div class="third level" data-level="district">
 											<div class="flipper">
 												<div class="front">
 													<div class="icon">
@@ -512,15 +518,15 @@
 					<img class="s1-img1" src="img/logo_215.png" />
 				</div>
 				<div class="content">
-					The College Readiness Indicator Systems (CRIS) framework articulates the interrelated components that make up an effective college<br>
+					The College Readiness Indicator Systems (CRIS) framework articulates the interrelated components that make up an effective college<br />
 					readiness indicator system.
-					<br><br>
-					The CRIS initiative, sponsored by the Bill &amp; Melinda Gates Foundation, aimed to develop and study the implementation of a system of<br>
-					signals and supports designed to increase the number of students who graduate from high school ready to succeed in college. Three<br>
-					research organizations - the Annenberg Institute for School Reform at Brown University, the John W. Gardner Center for Youth and<br>
-					Their Communities at Stanford University, and the University of Chicago Consortium on Chicago School Research - partnered with four<br>
+					<br /><br />
+					The CRIS initiative, sponsored by the Bill &amp; Melinda Gates Foundation, aimed to develop and study the implementation of a system of<br />
+					signals and supports designed to increase the number of students who graduate from high school ready to succeed in college. Three<br />
+					research organizations - the Annenberg Institute for School Reform at Brown University, the John W. Gardner Center for Youth and<br />
+					Their Communities at Stanford University, and the University of Chicago Consortium on Chicago School Research - partnered with four<br />
 					urban school districts and one school support network to conduct the initiative.
-					<br><br>
+					<br /><br />
 					<a href="" target="_blank">Please see the six-part CRIS Resource Series for a more detailed account of our research.</a>
 					<div class="button next">
 						CONTINUE
@@ -552,33 +558,33 @@
 								<div class="header">DIMENSIONS</div>
 							</div>
 							<div class="third">
-								<div class="s2-img4 carrot1"></div><br>
+								<div class="s2-img4 carrot1"></div><br />
 								<div class="ap">
 									<img class="s2-img5" src="img/academicpreparation_40.png" />
 									<div class="title">
-										ACADEMIC<br>
+										ACADEMIC<br />
 										PREPAREDNESS
 									</div>
 								</div>
 								<div class="s2-img4 carrot2"></div>
 							</div>
 							<div class="third">
-								<div class="s2-img4 carrot1"></div><br>
+								<div class="s2-img4 carrot1"></div><br />
 								<div class="at">
 									<img class="s2-img6" src="img/academictenacity_40.png" />
 									<div class="title">
-										ACADEMIC<br>
+										ACADEMIC<br />
 										TENACITY
 									</div>
 								</div>
 								<div class="s2-img4 carrot2"></div>
 							</div>
 							<div class="third">
-								<div class="s2-img4 carrot1"></div><br>
+								<div class="s2-img4 carrot1"></div><br />
 								<div class="ck">
 									<img class="s2-img7" src="img/collegeknowledge_40.png" />
 									<div class="title">
-										COLLEGE<br>
+										COLLEGE<br />
 										KNOWLEDGE
 									</div>
 								</div>
@@ -593,22 +599,22 @@
 								<div class="is">
 									<img class="s2-img8" src="img/individualstudent_40.png" />
 									<div class="title">
-										INDIVIDUAL<br>
+										INDIVIDUAL<br />
 										(STUDENT)
 									</div>
 								</div>
 								<div class="ss">
 									<img class="s2-img9" src="img/school_40.png" />
 									<div class="title">
-										SETTING<br>
+										SETTING<br />
 										(SCHOOL)
 									</div>
 								</div>
 								<div class="dp">
 									<img class="s2-img10" src="img/district_40.png" />
 									<div class="title">
-										SYSTEM<br>
-										(DISTRICT &amp;<br>
+										SYSTEM<br />
+										(DISTRICT &amp;<br />
 										PARTNERS)
 									</div>
 								</div>
@@ -621,7 +627,7 @@
 					</div>
 					<div class="right">
 						<div class="text">
-							COLLEGE<br>
+							COLLEGE<br />
 							READINESS
 						</div>
 					</div>
@@ -645,7 +651,7 @@
 					<div class="center">
 						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="472px"
 							 height="472px" viewBox="0 0 472 472" enable-background="new 0 0 472 472" xml:space="preserve">
-							<g id="IMPLEMENTSUPPORTS" class="eicArc">
+							<g id="IMPLEMENTSUPPORTS" class="eciArc">
 								<path fill="#9B3B47" stroke="#E7E8E8" stroke-width="2" stroke-miterlimit="10" d="M349.518,170.534l62.359-35.964
 									C376.787,73.857,311.165,32.999,236,32.999v71.979C284.515,104.979,326.867,131.348,349.518,170.534z"/>
 								<g>
@@ -716,7 +722,7 @@
 									</g>
 								</g>
 							</g>
-							<g id="MONITORPROGRESS" class="eicArc">
+							<g id="MONITORPROGRESS" class="eciArc">
 								<path fill="#9B3B47" stroke="#E7E8E8" stroke-width="2" stroke-miterlimit="10" d="M411.877,134.57l-62.359,35.964
 									c11.132,19.264,17.506,41.617,17.506,65.466c0,23.847-6.374,46.203-17.506,65.465l62.359,35.963
 									C429.126,307.586,439,272.946,439,236S429.126,164.414,411.877,134.57z"/>
@@ -792,7 +798,7 @@
 									</g>
 								</g>
 							</g>
-							<g id="ADJUSTSUPPORTS" class="eicArc">
+							<g id="ADJUSTSUPPORTS" class="eciArc">
 								<path fill="#9B3B47" stroke="#E7E8E8" stroke-width="2" stroke-miterlimit="10" d="M236,367.023v71.976
 									c75.165,0,140.787-40.855,175.877-101.571l-62.359-35.963C326.867,340.651,284.515,367.023,236,367.023z"/>
 								<g>
@@ -866,7 +872,7 @@
 									</g>
 								</g>
 							</g>
-							<g id="ANALYZERESULTS" class="eicArc">
+							<g id="ANALYZERESULTS" class="eciArc">
 								<path fill="#9B3B47" stroke="#E7E8E8" stroke-width="2" stroke-miterlimit="10" d="M235.998,367.023
 									c-48.515,0-90.867-26.37-113.516-65.559l-62.36,35.963c35.091,60.716,100.71,101.571,175.876,101.571H236v-71.976H235.998z"/>
 								<g>
@@ -917,7 +923,7 @@
 									</g>
 								</g>
 							</g>
-							<g id="IDENTIFY" class="eicArc">
+							<g id="IDENTIFY" class="eciArc">
 								<path fill="#9B3B47" stroke="#E7E8E8" stroke-width="2" stroke-miterlimit="10" d="M104.884,236
 									c0-23.865,6.377-46.235,17.518-65.513l-62.404-35.989C42.736,164.363,32.855,199.027,32.855,236s9.881,71.637,27.142,101.5
 									l62.404-35.988C111.261,282.236,104.884,259.863,104.884,236z"/>
@@ -945,7 +951,7 @@
 									</g>
 								</g>
 							</g>
-							<g id="PLAN" class="eicArc">
+							<g id="PLAN" class="eciArc">
 								<path fill="#9B3B47" stroke="#E7E8E8" stroke-width="2" stroke-miterlimit="10" d="M235.998,104.979H236V32.999h-0.002
 									c-75.166,0-140.785,40.858-175.876,101.571l62.36,35.964C145.131,131.348,187.483,104.979,235.998,104.979z"/>
 								<g>
@@ -963,7 +969,7 @@
 									</g>
 								</g>
 							</g>
-							<g id="CONTEXTS" class="eicHead">
+							<g id="CONTEXTS" class="eciHead">
 								<g>
 									<path fill="#818386" d="M200.362,23.048c0.795-0.121,1.398-0.535,1.808-1.242l1.2,0.91c-0.682,1.055-1.582,1.665-2.699,1.836
 										c-1.118,0.17-2.093-0.043-2.923-0.638c-0.83-0.596-1.328-1.432-1.492-2.509c-0.164-1.075,0.068-2.029,0.696-2.861
@@ -996,7 +1002,7 @@
 										C265.779,18.602,265.556,18.633,265.38,18.736z"/>
 								</g>
 							</g>
-							<g id="STATEPOLICY" class="eicHead">
+							<g id="STATEPOLICY" class="eciHead">
 								<g>
 									<path fill="#818386" d="M375.413,44.737c-0.203,0.008-0.37,0.097-0.499,0.267c-0.129,0.171-0.155,0.364-0.078,0.581
 										c0.077,0.216,0.342,0.604,0.792,1.161c0.451,0.558,0.727,1.09,0.826,1.596c0.099,0.506-0.051,1.021-0.448,1.545
@@ -1035,7 +1041,7 @@
 										l-5.117,0.056L432.866,118.141z"/>
 								</g>
 							</g>
-							<g id="COMMUNITY" class="eicHead">
+							<g id="COMMUNITY" class="eciHead">
 								<g>
 									<path fill="#818386" d="M354.09,434.405c0.698-0.399,1.111-1.003,1.239-1.81l1.448,0.418c-0.258,1.228-0.877,2.122-1.858,2.684
 										c-0.981,0.561-1.967,0.713-2.957,0.456c-0.989-0.257-1.754-0.857-2.294-1.803c-0.54-0.944-0.668-1.918-0.382-2.92
@@ -1065,7 +1071,7 @@
 										l1.686,4.832L415.092,385.888z"/>
 								</g>
 							</g>
-							<g id="HIGHEREDUCATION" class="eicHead">
+							<g id="HIGHEREDUCATION" class="eciHead">
 								<g>
 									<path fill="#818386" d="M26.047,325.755l0.635,1.51l-6.765,2.847l-0.635-1.51l2.662-1.12l-1.132-2.69l-2.662,1.119l-0.635-1.51
 										l6.765-2.846l0.635,1.51l-2.826,1.188l1.132,2.691L26.047,325.755z"/>
@@ -1114,7 +1120,7 @@
 										l4.179-6.034l1.26,0.873l0.27,5.935L106.238,423.061z"/>
 								</g>
 							</g>
-							<g id="LOCALPOLICY" class="eicHead">
+							<g id="LOCALPOLICY" class="eciHead">
 								<g>
 									<path fill="#818386" d="M49.767,91.882l-5.74-4.573l1.021-1.281l4.599,3.664l1.95-2.447l1.141,0.909L49.767,91.882z"/>
 									<path fill="#818386" d="M57.928,80.475c0.064,1.035-0.259,1.963-0.968,2.784c-0.709,0.822-1.58,1.276-2.613,1.365
@@ -1540,7 +1546,7 @@
 					</div>
 					<div class="right next">
 						<div class="text">
-							COLLEGE<br>
+							COLLEGE<br />
 							READINESS
 						</div>
 					</div>
@@ -1561,14 +1567,14 @@
 				</div>
 				<div class="content">
 					<div class="copy">
-						College ready students have the skills, knowledge and beliefs<br>
-						necessary to succeed in college. College ready school and districts<br>
-						provide the resources and opportunities for students to graduate high<br>
-						school ready for college.<br>
-						<br>
-						<a href="" target="_blank">You can learn more about implementing CRIS through the CRIS<br>
-						Resource Series:</a><br>
-						<br>
+						College ready students have the skills, knowledge and beliefs<br />
+						necessary to succeed in college. College ready school and districts<br />
+						provide the resources and opportunities for students to graduate high<br />
+						school ready for college.<br />
+						<br />
+						<a href="" target="_blank">You can learn more about implementing CRIS through the CRIS<br />
+						Resource Series:</a><br />
+						<br />
 						<ul>
 							<li>CRIS Framework Narrative</li>
 							<li>Menu of College Readiness Indicators and Supports</li>
@@ -1581,6 +1587,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- TSP Modal -->
 		<div class="tspModal">
 			<div class="head">
 				<div class="row1">
@@ -1595,26 +1602,26 @@
 			</div>
 			<div class="content">
 				<ul>
-				The CRIS framework features:<br>
-				<li>Indicators to target three distinct yet interdependent college readiness dimensions: <span class="bold">Academic</span><br>
+				The CRIS framework features:<br />
+				<li>Indicators to target three distinct yet interdependent college readiness dimensions: <span class="bold">Academic</span><br />
 				<span class="bold">Preparedness, College Knowledge, and Academic Tenacity;</span></li>
-				<li>A tri-level approach premised on the idea that an effective set of indicators generates data that<br>
-				reflect activities, processes, and outcomes at the <span class="bold">individual (student), setting (school),</span> and <span class="bold">system<span><br>
+				<li>A tri-level approach premised on the idea that an effective set of indicators generates data that<br />
+				reflect activities, processes, and outcomes at the <span class="bold">individual (student), setting (school),</span> and <span class="bold">system<span><br />
 				<span class="bold">(district and partners) levels</span>; and</li>
-				<li>A <span class="bold">Cycle of Inquiry</span> that connects indicators for each dimension and at each level with the<br>
+				<li>A <span class="bold">Cycle of Inquiry</span> that connects indicators for each dimension and at each level with the<br />
 				appropriate supports.</li>
 				</ul>
-				<br>
+				<br />
 				<a href="" target="_blank">See the CRIS Framework Narrative for more information.</a>
-				<br>
+				<br />
 				<div class="button head dismissModal">
 					GET STARTED
 					<img src="img/carrotblack.png" />
 				</div>
 			</div>
 		</div>
-		<!-- EIC MODAL -->
-		<div class="eidModal">
+		<!-- eci MODAL -->
+		<div class="eciModal">
 			<div class="head">
 				<img class="m2-img2 exit dismissModal" src="img/exitblack_20.png" />
 				<div class="header">
@@ -1622,8 +1629,9 @@
 				</div>
 			</div>
 			<div class="content">
-				The Cycle of Inquiry is the mechanism<br>
-				connecting indicators with supports.
+				The Cycle of Inquiry is the mechanism<br />
+				connecting indicators with supports. Click<br />
+				identify to start.
 			</div>
 		</div>
 	</div>
