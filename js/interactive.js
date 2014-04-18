@@ -58,6 +58,7 @@ var Slideshow = function (leaflet) {
 		slideshow.complete = function () {
 			//Save That User Has Completed Interactive
 			localStorage.setItem("first", "false");
+			slideshow.first = false;
 		};
 
 	/**
@@ -172,13 +173,12 @@ var Slideshow = function (leaflet) {
 	 		slideshow.contextsActive = false;
 	 	};
 	 	//Navigat Contexts
-	 	slideshow.toContext = function (element) {
-	 		var target = element.dataset.to;
+	 	slideshow.toContext = function (context) {
 	 		$('.context').fadeOut();
-	 		$('.' + target).fadeIn();
+	 		$('.' + context).fadeIn();
 	 		d3.selectAll('.eciHead').attr('class', 'eciHead');
 	 		d3.select('#RING').attr('class', 'hover');
-	 		d3.select('#' + target).attr('class', 'hover eciHead');
+	 		d3.select('#' + context).attr('class', 'hover eciHead');
 	 	};
 	};
 
@@ -193,65 +193,80 @@ var Leaflet = function () {
 	 	leaflet.level = ko.observable(null);
 
 	 	//Leaflet State Arrays
-	 	leaflet.initial = [
-	 		{selector: "#leafletWrapper", attr: "width", value: "50px", duration: 600},
-	 		{selector: '.tspStem', attr: "background-color", value: "#9a3b47"},
-	 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
-	 		{selector: ".sliding", attr: "left", value: "-550px", duration: 600},
-	 		{selector: ".tspLeaf", attr: "left", value: "0px", duration: 600},
-	 		{selector: ".siStem", attr: "left", value: "225px", duration: 600},
-	 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
-	 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
-	 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
-	 	];
-	 	leaflet.tspShow = [
-	 		{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 800},
-	 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
-	 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
-	 		{selector: '.siStem', attr: "background-color", value: "#9a3b47"},
-	 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
-	 		{selector: ".tspLeaf", attr: "left", value: "0px", duration: 600},
-	 		{selector: ".siStem", attr: "left", value: "225px", duration: 600},
-	 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
-	 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
-	 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
-	 	];
-	 	leaflet.siShow = [
-	 		{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 600},
-	 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
-	 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
-	 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
-	 		{selector: ".tspLeaf", attr: "left", value: "-500px", duration: 600},
-	 		{selector: ".siStem", attr: "left", value: "-275px", duration: 600},
-	 		{selector: '.siStem', attr: "background-color", value: "#600922"},
-	 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
-	 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
-	 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
-	 	];
-	 	leaflet.siSelect = [
-	 		{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 600},
-	 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
-	 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
-	 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
-	 		{selector: ".tspLeaf", attr: "left", value: "-500px", duration: 600},
-	 		{selector: ".siStem", attr: "left", value: "-275px", duration: 600},
-	 		{selector: '.siStem', attr: "background-color", value: "#600922"},
-	 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
-	 		{selector: ".siLeaf .slider", attr: "left", value: "-500px", duration: 600},
-	 		{selector: ".eciStem", attr: "left", value: "275px", duration: 600}
-	 	];
-	 	leaflet.done = [
-	 		{selector: '#leafletWrapper', attr: "width", value: "100px", duration: 800},
-	 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
-	 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
-	 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
-	 		{selector: ".tspLeaf", attr: "left", value: "-500px", duration: 600},
-	 		{selector: ".siStem", attr: "left", value: "-275px", duration: 600},
-	 		{selector: '.siStem', attr: "background-color", value: "#600922"},
-	 		{selector: ".siLeaf", attr: "left", value: "-452px", duration: 600},
-	 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
-	 		{selector: ".eciStem", attr: "left", value: "-275px", duration: 600}
-	 	];
+	 	leaflet.initial = {
+	 		name: "initial",
+	 		animations: [
+		 		{selector: "#leafletWrapper", attr: "width", value: "50px", duration: 600},
+		 		{selector: '.tspStem', attr: "background-color", value: "#9a3b47"},
+		 		{selector: ".tspStem", attr: "left", value: "-274px", duration: 600},
+		 		{selector: ".sliding", attr: "left", value: "-550px", duration: 600},
+		 		{selector: ".tspLeaf", attr: "left", value: "0px", duration: 600},
+		 		{selector: ".siStem", attr: "left", value: "225px", duration: 600},
+		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
+		 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
+		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
+		 	]
+		};
+	 	leaflet.tspShow = {
+	 		name: "tspShow",
+	 		animations: [
+		 		{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 800},
+		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
+		 		{selector: '.siStem', attr: "background-color", value: "#9a3b47"},
+		 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
+		 		{selector: ".tspLeaf", attr: "left", value: "0px", duration: 600},
+		 		{selector: ".siStem", attr: "left", value: "225px", duration: 600},
+		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
+		 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
+		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
+		 	]
+		};
+	 	leaflet.siShow = {
+	 		name: "siShow",
+	 		animations: [
+		 		{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 600},
+		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
+		 		{selector: ".tspLeaf", attr: "left", value: "-500px", duration: 600},
+		 		{selector: ".siStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
+		 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
+		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
+		 	]
+		};
+	 	leaflet.siSelect = {
+	 		name: "siSelect",
+	 		animations: [
+	 			{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 600},
+		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
+		 		{selector: ".tspLeaf", attr: "left", value: "-500px", duration: 600},
+		 		{selector: ".siStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
+		 		{selector: ".siLeaf .slider", attr: "left", value: "-500px", duration: 600},
+		 		{selector: ".eciStem", attr: "left", value: "275px", duration: 600}
+	 		]
+	 	};
+	 	leaflet.done = {
+	 		name: "done",
+	 		animations: [
+		 		{selector: '#leafletWrapper', attr: "width", value: "100px", duration: 800},
+		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
+		 		{selector: ".tspLeaf", attr: "left", value: "-500px", duration: 600},
+		 		{selector: ".siStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".siLeaf", attr: "left", value: "-452px", duration: 600},
+		 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
+		 		{selector: ".eciStem", attr: "left", value: "-275px", duration: 600}
+		 	]
+		};
 
 	 	leaflet.state = leaflet.initial;
 
@@ -265,8 +280,8 @@ var Leaflet = function () {
 		};
 		//Set Leaflet Position
 	 	leaflet.position = function () {
-	 		var left = $('#interactiveWrapper').css("margin-left");
-	 		$('#leafletWrapper').css("left", left);
+	 		var left = $('#interactiveWrapper').offset().left;
+	 		$('#leafletWrapper').css("left", left + "px");
 	 	};
 	 	//Show Leaflet
 	 	leaflet.show = function () {
@@ -301,18 +316,17 @@ var Leaflet = function () {
 	 	};
 	 	//Loops Throught State Object and Styles Or Animates to State
 	 	leaflet.setState = function (state) {
-	 		leaflet.state = state;
-	 		for (var i = 0; i < state.length; i++) {
-	 			if (state[i].hasOwnProperty("duration")) {
-	 				animElem({selector: state[i].selector, attr: state[i].attr, value: state[i].value, duration: state[i].duration});
+	 		var animations = state.animations
+	 		for (var i = 0; i < animations.length; i++) {
+	 			if (animations[i].hasOwnProperty("duration")) {
+	 				animElem({selector: animations[i].selector, attr: animations[i].attr, value: animations[i].value, duration: animations[i].duration});
 	 			}
 	 			else {
-	 				styleElem({selector: state[i].selector, attr: state[i].attr, value: state[i].value});
+	 				styleElem({selector: animations[i].selector, attr: animations[i].attr, value: animations[i].value});
 	 			}
 	 		};
-	 	};
-	 	leaflet.resetPosition = function () {
-
+	 		leaflet.state = state;
+	 		return leaflet.state;
 	 	};
 	};
 
@@ -385,7 +399,8 @@ var Leaflet = function () {
 		});
 		//Contexts Next/Previous
 		$('.n, .p').on("click", function (e) {
-			interactive.toContext(e.currentTarget);
+			var data = $(this).data().context;
+			interactive.toContext(data);
 		});
 		//Dismiss eci Modal
 		$('.eciModal .dismissModal').on("click", function () {
@@ -406,8 +421,9 @@ var Leaflet = function () {
 		$('.tspStem').on("click", function () {
 			(leaflet.active === false) ? leaflet.active = true : void(0);
 			$('.tspModal').fadeOut();
-			leaflet.setState(leaflet.tspShow);
+			$('.siModal').fadeOut();
 			$('.third').removeClass('selected');
+			(leaflet.state.name === 'tspShow') ? (leaflet.setState(leaflet.initial), $('.mask').fadeOut()) : (leaflet.state.name === "done") ? (leaflet.setState(leaflet.tspShow), $('.mask').fadeOut()) : (leaflet.setState(leaflet.tspShow), $('.mask').fadeIn()) ;
 			leaflet.level(null);
 			leaflet.dimension(null);
 		});
@@ -417,10 +433,11 @@ var Leaflet = function () {
 		});
 		//SI Stem Click
 		$('.siStem').on("click", function () {
-			leaflet.setState(leaflet.siShow);
+			(leaflet.state.name === "done") ? leaflet.setState(leaflet.siSelect) : leaflet.setState(leaflet.done);
 		});
 		//SI Next Button Click
 		$('.siNext .button').on("click", function () {
+			$('.back').perfectScrollbar('update');
 			leaflet.setState(leaflet.siSelect);
 		});
 		//ECI Stem Click

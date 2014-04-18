@@ -1,10 +1,6 @@
 /*
 SVG Styles
 */
-html {
-	background-color: grey;
-}
-
 	.eciArc {
 		fill: #9a3b47;
 		cursor: pointer;
@@ -90,7 +86,10 @@ Basic Styles
 	.exit {
 		cursor: pointer;
 	}
-	a, a:active, a:hover, a:visited { 
+	a, a:visited {
+		color: #FFFFFF;
+	}
+	a:active, a:hover { 
 		color: #818385;
 	}
 	.bold {
@@ -124,6 +123,9 @@ Basic Styles
 		top: 282px;
 		margin: 0 42px 24px 42px;
 		line-height: 22px;
+	}
+	.slide:nth-child(1) .content a {
+		color: #818385;
 	}
 	.slide:nth-child(1) .content .button {
 		position: relative;
@@ -406,7 +408,7 @@ Basic Styles
 
 	.tspModal {
 		position: absolute;
-		top: 40px;
+		top: 52px;
 		left: 976px;
 		width: 748px;
 		height: 520px;
@@ -453,17 +455,20 @@ Basic Styles
 	.tspModal .content {
 		position: relative;
 		height: 304px;
-		width: 698px;
+		width: 648px;
 		margin: 0 40px 0 50px;
 		line-height: 24px;
-		font-size: 14px;
+		font-size: 16px;
 		font-weight: normal;
 		font-family: 'Lusitana', serif;
 	}
+	.tspModal .content a {
+		color: #818385;
+	}
 	.tspModal .content .button {
 		position: relative;
-		top: 20px;
-		left: 548px;
+		top: 12px;
+		left: 540px;
 		height: 40px;
 		width: 140px;
 		font-size: 14px;
@@ -973,7 +978,7 @@ Basic Styles
 	.leaflet .static .tspStem {
 		position: relative;
 		top: 275px;
-		left: -275px;
+		left: -274px;
 		background-color: #9a3b47;
 		cursor: pointer;
 	}
@@ -1036,9 +1041,6 @@ Basic Styles
 		font-size: 16px;
 		line-height: 22px;
 		font-weight: normal;
-	}
-	.leaflet .sliding .tspLeaf .content .copy a {
-		color: #FFFFFF;
 	}
 	.leaflet .sliding .tspLeaf .content .tspNext {
 		position: relative;
@@ -1242,69 +1244,41 @@ Basic Styles
 	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third:nth-child(4) {
 		border-bottom: none;
 	}
-	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .back, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .front, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .back {
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper {
+		position: relative;
+		left: 0px;
+		top: 0px;
+		width: inherit;
+		height: inherit;
+		border: none;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .back, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .back {
 		height: 168px;
-		width: 250px;
-		backface-visibility: hidden;
-		-webkit-backface-visibility: hidden;
-		-moz-backface-visibility: hidden;
-		-ms-backface-visibility: hidden;
-		-o-backface-visibility: hidden;
+		width: 249px;
 		position: absolute;
 		top: 0px;
 		left: 0px;
 	}
-	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper {
-		perspective: 800;
-		-webkit-perspective: 800;
-		-moz-perspective: 800;
-		-ms-perspective: 800;
-		-o-perspective: 800;
-		border: none;
-	}
-	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper {
-		position: relative;
-		transition: 0.6s;
-		-webkit-transition: 0.6s;
-		-moz-transition: 0.6s;
-		-ms-transition: 0.6s;
-		-o-transition: 0.6s;
-		transform-style: preserve-3d;
-		-webkit-transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
-		-ms-transform-style: preserve-3d;
-		-o-transform-style: preserve-3d;
-	}
-	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third:hover .flipper, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third.selected .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third:hover .flipper, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third.selected .flipper {
-		transform: rotateY(180deg);
-		-webkit-transform: rotateY(180deg);
-		-moz-transform: rotateY(180deg);
-		-ms-transform: rotateY(180deg);
-		-o-transform: rotateY(180deg);
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third:hover .front, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third.selected .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third:hover .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third.selected .front {
+		display: none;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front {
 		z-index: 100;
 		background-color: #FFFFFF;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .back, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .back {
-		transform: rotateY(180deg);
-		-webkit-transform: rotateY(180deg);
-		-moz-transform: rotateY(180deg);
-		-ms-transform: rotateY(180deg);
-		-o-transform: rotateY(180deg);
 		background-color: #600922;
-		overflow: auto;
+		z-index: 75;
+		overflow-y: hidden;
+		overflow-x: hidden;
+		-ms-overflow-style: none;
+
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .back, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .back {
-		backface-visibility: hidden;
-		-webkit-backface-visibility: hidden;
-		-moz-backface-visibility: hidden;
-		-ms-backface-visibility: hidden;
-		-o-backface-visibility: hidden;
 		position: absolute;
 		top: 0px;
 		left: 0px;
-		color: #FFFFFFs;
+		color: #FFFFFF;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third .flipper .front .icon, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third .flipper .front .icon {
 		position: absolute;
@@ -1349,7 +1323,7 @@ Basic Styles
 		position: absolute;
 		top: 64px;
 		left: 0px;
-		width: 210px;
+		width: 204px;
 		height: auto;
 		padding: 0 20px 12px 20px;
 		font-family: 'Lusitana';
@@ -1432,8 +1406,8 @@ Basic Styles
 	    display: block;
 	    visibility: visible;
 	}
-	.ps-container .ps-scrollbar-y-rail:hover .ps-scrollbar-y,
-	.ps-container .ps-scrollbar-y-rail.hover .ps-scrollbar-y {
+	.ps-container .ps-scrollbar-y-rail .ps-scrollbar-y,
+	.ps-container .ps-scrollbar-y-rail .ps-scrollbar-y {
 	    background-color: #9a3b47;
 	    cursor: pointer;
 	    display: block;
