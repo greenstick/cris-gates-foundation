@@ -58,7 +58,7 @@ var Slideshow = function (leaflet) {
 		slideshow.complete = function () {
 			//Save That User Has Completed Interactive
 			localStorage.setItem("first", "false");
-			slideshow.first = false;
+			slideshow.first = localStorage.getItem("first");
 		};
 
 	/**
@@ -81,12 +81,12 @@ var Slideshow = function (leaflet) {
 			};
 			//If Third Slide & First Visit, Show eci Modal
 			if (slideshow.index === 2 && slideshow.first === true) {
-				console.log("2");
 				setTimeout(function () {
 					$('.eciModal').fadeIn();
 					$('.mask').fadeIn();
 				}, 1500);
 			};
+			//Set Slideshow Complete Storage Variable
 			if (slideshow.index === 3) {
 				slideshow.complete();
 				setTimeout(function () {
@@ -133,7 +133,10 @@ var Slideshow = function (leaflet) {
 	 	};
 	 	//Manages Hiding and Showing of Leaflet
 	 	slideshow.displayLeaflet = function () {
-	 		slideshow.index > 0 ? slideshow.leaflet.show() : slideshow.leaflet.hide();
+	 		slideshow.index !== 0 ? slideshow.leaflet.show() : slideshow.leaflet.hide();
+	 		if (slideshow.index === 1 && slideshow.first === false) {
+	 			 leaflet.setState(leaflet.initial)
+	 		};
 	 	};
 	 	//Shows Mask Overlay
 	 	slideshow.showMask = function (selector) {
@@ -192,13 +195,14 @@ var Leaflet = function () {
 		leaflet.dimension = ko.observable(null),
 	 	leaflet.level = ko.observable(null);
 
-	 	//Leaflet State Arrays
+	 	//Leaflet State Objects
 	 	leaflet.initial = {
 	 		name: "initial",
 	 		animations: [
+	 			{selector: ".leaflet", attr: "left", value: "0px", duration: 600},
 		 		{selector: "#leafletWrapper", attr: "width", value: "50px", duration: 600},
 		 		{selector: '.tspStem', attr: "background-color", value: "#9a3b47"},
-		 		{selector: ".tspStem", attr: "left", value: "-274px", duration: 600},
+		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
 		 		{selector: ".sliding", attr: "left", value: "-550px", duration: 600},
 		 		{selector: ".tspLeaf", attr: "left", value: "0px", duration: 600},
 		 		{selector: ".siStem", attr: "left", value: "225px", duration: 600},
@@ -210,6 +214,7 @@ var Leaflet = function () {
 	 	leaflet.tspShow = {
 	 		name: "tspShow",
 	 		animations: [
+	 			{selector: ".leaflet", attr: "left", value: "0px", duration: 600},
 		 		{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 800},
 		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
 		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
@@ -225,6 +230,7 @@ var Leaflet = function () {
 	 	leaflet.siShow = {
 	 		name: "siShow",
 	 		animations: [
+	 			{selector: ".leaflet", attr: "left", value: "0px", duration: 600},
 		 		{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 600},
 		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
 		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
@@ -240,6 +246,7 @@ var Leaflet = function () {
 	 	leaflet.siSelect = {
 	 		name: "siSelect",
 	 		animations: [
+	 			{selector: ".leaflet", attr: "left", value: "0px", duration: 600},
 	 			{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 600},
 		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
 		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
@@ -249,12 +256,29 @@ var Leaflet = function () {
 		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
 		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
 		 		{selector: ".siLeaf .slider", attr: "left", value: "-500px", duration: 600},
-		 		{selector: ".eciStem", attr: "left", value: "275px", duration: 600}
+		 		{selector: ".eciStem", attr: "left", value: "175px", duration: 600}
+	 		]
+	 	};
+	 	leaflet.engage = {
+	 		name: "engage",
+	 		animations: [
+	 			{selector: ".leaflet", attr: "left", value: "0px", duration: 600},
+	 			{selector: '#leafletWrapper', attr: "width", value: "900px", duration: 600},
+		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
+		 		{selector: ".tspLeaf", attr: "left", value: "-500px", duration: 600},
+		 		{selector: ".siStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
+		 		{selector: ".siLeaf .slider", attr: "left", value: "-500px", duration: 600},
+		 		{selector: ".eciStem", attr: "left", value: "273px", duration: 600}
 	 		]
 	 	};
 	 	leaflet.done = {
 	 		name: "done",
 	 		animations: [
+	 			{selector: ".leaflet", attr: "left", value: "0px", duration: 600},
 		 		{selector: '#leafletWrapper', attr: "width", value: "100px", duration: 800},
 		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
 		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
@@ -286,7 +310,7 @@ var Leaflet = function () {
 	 	//Show Leaflet
 	 	leaflet.show = function () {
 	 		$('.leaflet').stop().fadeIn(600);
-	 	}
+	 	};
 	 	//Hide Leaflet
 	 	leaflet.hide = function () {
 	 		$('.leaflet').stop().fadeOut(400);
@@ -339,9 +363,9 @@ var Leaflet = function () {
 		interactive.init();
 		ko.applyBindings(interactive);
 
-	/**
-	 *	Slideshow Event Bindings
-	 **/
+/**
+ *	Slideshow Event Bindings
+ **/
 
 	 	//Next Slide
 		$('.next').on("click", function () {
@@ -409,13 +433,19 @@ var Leaflet = function () {
 		});
 		//Dismiss TSP Modal
 		$('.tspModal .dismissModal').on("click", function () {
+			$('.mask').fadeOut();
 			$('.tspModal').fadeOut();
-			(leaflet.active === false) ? $('.mask').fadeOut() : void(0);
+			$('.leaflet').fadeIn();
+			leaflet.setState(leaflet.initial);
+		});
+		//Open SI Leaflet
+		$('.s2-img5, .s2-img6, .s2-img7, .s2-img8, .s2-img9, .s2-img10').on("click", function () {
+			leaflet.setState(leaflet.siSelect);
 		});
 
-	/**
-	 *	Leaflet Event Bindings
-	 **/
+/**
+ *	Leaflet Event Bindings
+ **/
 
 	 	//TSP Stem Click
 		$('.tspStem').on("click", function () {
@@ -423,7 +453,9 @@ var Leaflet = function () {
 			$('.tspModal').fadeOut();
 			$('.siModal').fadeOut();
 			$('.third').removeClass('selected');
-			(leaflet.state.name === 'tspShow') ? (leaflet.setState(leaflet.initial), $('.mask').fadeOut()) : (leaflet.state.name === "done") ? (leaflet.setState(leaflet.tspShow), $('.mask').fadeOut()) : (leaflet.setState(leaflet.tspShow), $('.mask').fadeIn()) ;
+			(leaflet.state.name === 'tspShow') ? 
+				(leaflet.setState(leaflet.initial), $('.mask').fadeOut()) : (leaflet.state.name === "done") ? 
+					(leaflet.setState(leaflet.tspShow), $('.mask').fadeIn()) : (leaflet.setState(leaflet.tspShow), $('.mask').fadeIn());
 			leaflet.level(null);
 			leaflet.dimension(null);
 		});
@@ -433,7 +465,8 @@ var Leaflet = function () {
 		});
 		//SI Stem Click
 		$('.siStem').on("click", function () {
-			(leaflet.state.name === "done") ? leaflet.setState(leaflet.siSelect) : leaflet.setState(leaflet.done);
+			(leaflet.state.name === "done") ? 
+				(leaflet.setState(leaflet.siSelect), $('.mask').fadeIn()) : (leaflet.setState(leaflet.done), $('.mask').fadeOut());
 		});
 		//SI Next Button Click
 		$('.siNext .button').on("click", function () {
@@ -471,5 +504,6 @@ var Leaflet = function () {
 			$(this).addClass('selected');
 			var data = $(this).data().level;
 			leaflet.level(data);
+			(leaflet.dimension() !== null && leaflet.level !== null) ? leaflet.setState(leaflet.engage) : leaflet.setState(leaflet.siSelect);
 		});
 });

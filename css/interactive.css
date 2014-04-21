@@ -166,16 +166,11 @@ Basic Styles
 	.slide:nth-child(2) .head .nav {
 		position: relative;
 		top: 0px;
-		left: 760px;
-		width: 138px;
+		left: 834px;
+		width: 66px;
 		height: 48px;
 		display: inline-block;
 	}	
-	.slide:nth-child(2) .head .nav .button {
-		position: relative;
-		width: 60px;
-		display: inline-block;
-	}
 	.slide:nth-child(2) .head .nav .button:hover {
 		color: #9a3b47;
 	}
@@ -185,7 +180,7 @@ Basic Styles
 	.slide:nth-child(2) .head .siHeader {
 		position: absolute;
 		top: 36px;
-		left: 102px;
+		left: 156px;
 		height: 16px;
 		width: 176px;
 		padding-top: 4px;
@@ -198,7 +193,7 @@ Basic Styles
 	.slide:nth-child(2) .head .eciHeader {
 		position: absolute;
 		top: 36px;
-		left: 472px;
+		left: 528px;
 		height: 16px;
 		width: 240px;
 		padding-top: 4px;
@@ -215,12 +210,34 @@ Basic Styles
 		top: 0px;
 		left: 0px;
 	}
+/*	.slide:nth-child(2) .content .left {
+		position: absolute;
+		left: -250px;
+		top: 250px;
+		display: inline-block;
+		height: 15px;
+		width: 550px;
+		padding: 17px 0 17px 0;
+		text-align: center;
+		color: #FFFFFF;
+		display: inline-block;
+		z-index: 10;
+		font-size: 12px;
+		letter-spacing: 2px;
+		background-color: #9a3b47;
+		border-bottom: 1px solid #600922;
+		-webkit-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+	}*/
 	.slide:nth-child(2) .content .center {
 		position: relative;
 		top: 0px;
-		left: 46px;
+		left: 100px;
 		height: 550px;
-		width: 760px;
+		width: 750px;
 		display: inline-block;
 	}
 	.slide:nth-child(2) .content .center .dimensions {
@@ -233,7 +250,7 @@ Basic Styles
 	.slide:nth-child(2) .content .center .dimensions .subhead {
 		position: relative;
 		top: 0px;
-		left: 0px;
+		left: 8px;
 		height: 95px;
 		width: 124px;
 	}
@@ -306,7 +323,7 @@ Basic Styles
 	.slide:nth-child(2) .content .center .dimensions .third:nth-child(4) .carrot1 {
 		position: relative;
 		top: 76px;
-		left: -56px;
+		left: -54px;
 	}
 	.slide:nth-child(2) .content .center .dimensions .third:nth-child(4) .carrot2 {
 		position: relative;
@@ -384,22 +401,35 @@ Basic Styles
 		position: absolute;
 		top: 0px;
 		left: 341px;
-		width: 421px;
+		width: 407px;
 		height: 550px;
 		border-left: 2px solid #424142;
 		display: inline-block;
 	}
 	.slide:nth-child(2) .content .right {
 		position: absolute;
-		left: 810px;
-		height: 550px;
-		width: 90px;
+		left: 600px;
+		top: 250px;
 		display: inline-block;
+		height: 15px;
+		width: 550px;
+		padding: 17px 0 17px 0;
+		text-align: center;
+		color: #FFFFFF;
+		display: inline-block;
+		z-index: 10;
+		font-size: 12px;
+		letter-spacing: 2px;
 		background-color: #9a3b47;
+		border-bottom: 1px solid #600922;
+		-webkit-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		transform: rotate(-90deg);
 	}
 	.slide:nth-child(2) .content .right .text {
 		position: relative;
-		top: 246px;
 		text-align: center;
 		color: #FFFFFF;
 	}
@@ -501,8 +531,8 @@ Basic Styles
 	.slide:nth-child(3) .head .nav {
 		position: relative;
 		top: 0px;
-		left: 760px;
-		width: 138px;
+		left: 804px;
+		width: 96px;
 		height: 48px;
 		display: inline-block;
 	}
@@ -546,22 +576,34 @@ Basic Styles
 	}
 	.slide:nth-child(3) .content .center .carrot {
 		position: relative;
-		top: -254px;
-		left: 572px;
+		top: -242px;
+		left: 596px;
 	}
 	.slide:nth-child(3) .content .right {
 		position: absolute;
-		top: 0px;
-		left: 810px;
-		height: 550px;
-		width: 90px;
+		left: 600px;
+		top: 250px;
 		display: inline-block;
+		height: 15px;
+		width: 550px;
+		padding: 17px 0 17px 0;
+		text-align: center;
+		color: #FFFFFF;
+		display: inline-block;
+		z-index: 10;
+		font-size: 12px;
+		letter-spacing: 2px;
 		background-color: #9a3b47;
+		border-bottom: 1px solid #600922;
+		-webkit-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		transform: rotate(-90deg);
 		cursor: pointer;
 	}
 	.slide:nth-child(3) .content .right .text {
 		position: relative;
-		top: 246px;
 		text-align: center;
 		color: #FFFFFF;
 	}
@@ -879,33 +921,40 @@ Basic Styles
 	.s2-img5 {
 		position: relative;
 		margin-bottom: 4px;
+		cursor: pointer;
 	}
 	.s2-img6 {
 		position: relative;	
 		top: 16px;
 		margin-bottom: 4px;
+		cursor: pointer;
 	}
 	.s2-img7 {
 		position: relative;
 		margin-bottom: 4px;
+		cursor: pointer;
 	}
 	.s2-img8 {
 		position: relative;
 		margin-bottom: 4px;
+		cursor: pointer;
 	}
 	.s2-img9 {
 		position: relative;
 		margin-bottom: 4px;
+		cursor: pointer;
 	}
 	.s2-img10 {
 		position: relative;
 		margin-bottom: 4px;
+		cursor: pointer;
 	}
 	.s2-img11 {
 		position: relative;
 		top: 94px;
 		left: 32px;
 		display: inline-block;
+		cursor: pointer;
 	}
 	.s4-img1 {
 		position: relative;
@@ -931,15 +980,16 @@ Basic Styles
 	.leaflet {
 		position: absolute;
 		top: 0px;
-		left: 0px;
+		left: -50px;
 		width: 50px;
 		height: 600px;
 		background-color: #9a3b47;
-		display: none;
+		display: block;
 		font: 'Montserrat';
 		font-family: 'Montserrat', sans-serif;
 		font-size: 12px;
 		color: #231f20;
+		opacity: 1;
 	}
 	.leaflet .static {
 		position: relative;
@@ -978,7 +1028,7 @@ Basic Styles
 	.leaflet .static .tspStem {
 		position: relative;
 		top: 275px;
-		left: -274px;
+		left: -275px;
 		background-color: #9a3b47;
 		cursor: pointer;
 	}
@@ -1082,10 +1132,9 @@ Basic Styles
 		position: absolute;
 		top: 0px;
 		left: 49px;
-		width: 500px;
+		width: 499px;
 		height: 600px;
 		display: inline-block;
-		border: 1px solid #9a3b47;
 		background: #600922;
 		z-index: 0;
 		overflow: hidden;
@@ -1211,7 +1260,7 @@ Basic Styles
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third {
 		height: 168px;
-		width: 249px;
+		width: 250px;
 		border-right: 1px solid #818385;
 		border-bottom: 1px solid #818385;
 		cursor: pointer;
