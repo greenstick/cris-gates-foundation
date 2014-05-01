@@ -31,7 +31,8 @@ var Slideshow = function (leaflet) {
 	 	slideshow.first = true,
 	 	slideshow.contextsActive = false,
 	 	slideshow.leaflet = leaflet,
-	 	leaflet.slideshow = slideshow;
+	 	leaflet.slideshow = slideshow,
+	 	slideshow.sequence;
 
 	/**
 	 *	Slideshow Init
@@ -47,12 +48,18 @@ var Slideshow = function (leaflet) {
 	 		});
 	 		//Setting First Slide to Active
 	 		$('.slide').first().addClass('active');
+	 		$('.dynamicLevel').hide();
+	 		$('.dynamicLevel.show').show();
 	 		//Checking If Local Storage Exists, Allowing Free Navigation If Not
-	 		typeof (Storage) !== "undefined" ? slideshow.first = localStorage.getItem("first") : slideshow.first = false;
+	 		typeof (Storage) !== "undefined" ? slideshow.first = localStorage.getItem("first") : slideshow.first = true;
 	 		//If Local Storage Exists and slideshow.first Has Been Set to Null, First Visit is True
 	 		slideshow.first === null ? slideshow.first = true : slideshow.first = false;
 	 		//Show Nav Depending on First or Return User
-	 		slideshow.showNav();
+	 		slideshow.showInfo('IDENTIFY');
+	 		d3.select('#IDENTIFY').attr('class', 'eciArc selected');
+	 		leaflet.state = leaflet.initial;
+	 		slideshow.displayLeaflet();
+	 		$('.ps-scrollbar-y').css("height", "112px");
 		};
 
 		slideshow.complete = function () {
@@ -72,6 +79,10 @@ var Slideshow = function (leaflet) {
 			var position = $('.slide.active').position();
 			styleElem({selector: ".mask", attr: "left", value: position.left});
 			slideshow.index++;
+			//If Second Slide
+			if (slideshow.index === 1) {
+	 			 leaflet.setState(leaflet.initial);
+	 		};
 			//If Second Slide & First Visit, Show TSP Modal
 			if (slideshow.index === 1 && slideshow.first === true) {
 				setTimeout(function () {
@@ -88,7 +99,9 @@ var Slideshow = function (leaflet) {
 			};
 			//Set Slideshow Complete Storage Variable
 			if (slideshow.index === 3) {
+				leaflet.setState(leaflet.last);
 				slideshow.complete();
+				slideshow.clearSequence();
 				setTimeout(function () {
 					$('.nav').fadeIn();
 				}, 1500)
@@ -100,20 +113,27 @@ var Slideshow = function (leaflet) {
 			$('#interactiveWrapper').scrollTo($('.slide.active'), 600);
 			var position = $('.slide.active').position();
 			styleElem({selector: ".mask", attr: "left", value: position.left});
+			$('.eciModal').fadeOut();
+			$('.siModal').fadeOut();
+			$('.tspModal').fadeOut();
 			slideshow.index--;
-	 	};
-	 	slideshow.showNav = function () {
-	 		slideshow.first == true ? $('.nav').hide() : $('.nav').show(); 
+			if (slideshow.index === 2) {
+				leaflet.setState(leaflet.done);
+			};
 	 	};
 	 	//To Home
 	 	slideshow.home = function () {
+	 		localStorage.removeItem("first");
+	 		slideshow.first = true;
 	 		$('.active').removeClass('active');
 	 		$('.slide:eq(0)').addClass('active');
 	 		$('#interactiveWrapper').scrollTo($('.slide.active'), 600);
 	 		var position = $('.slide.active').position();
 			styleElem({selector: ".mask", attr: "left", value: position.left});
 	 		slideshow.index = 0;
-	 		leaflet.setState(slideshow.leaflet.initial);
+	 		leaflet.setState(slideshow.leaflet.first);
+	 		slideshow.showInfo('IDENTIFY');
+	 		d3.select('#IDENTIFY').attr('class', 'eciArc selected');
 	 	};
 	 	//To Cycle
 	 	slideshow.cycle = function () {
@@ -129,22 +149,10 @@ var Slideshow = function (leaflet) {
 					$('.mask').fadeIn();
 				}, 1500);
 			};
-
 	 	};
 	 	//Manages Hiding and Showing of Leaflet
 	 	slideshow.displayLeaflet = function () {
-	 		slideshow.index !== 0 ? slideshow.leaflet.show() : slideshow.leaflet.hide();
-	 		if (slideshow.index === 1 && slideshow.first === false) {
-	 			 leaflet.setState(leaflet.initial)
-	 		};
-	 	};
-	 	//Shows Mask Overlay
-	 	slideshow.showMask = function (selector) {
-	 		$(selector).stop().fadeIn(600);
-	 	};
-	 	//Hides Mask Overlay
-	 	slideshow.hideMask = function (selector) {
-	 		$(selector).stop().fadeOut(400);
+	 		slideshow.index !== 0 ? leaflet.show() : leaflet.hide();
 	 	};
 	 	//Detect Cycle Engage
 	 	slideshow.detectEngage = ko.computed(function () {
@@ -157,13 +165,15 @@ var Slideshow = function (leaflet) {
 	 		$('.' + id + '.info').fadeIn();
 	 	};
 	 	//Show Context
-	 	slideshow.showContext = function (id) {
+	 	slideshow.showContext = function (context) {
 	 		d3.selectAll('.eciHead.selected').attr('class', 'eciHead');
 	 		$('.info').fadeOut();
 	 		$('.context').fadeOut();
 	 		$('.context-bg').fadeIn();
+	 		d3.selectAll('.eciHead').attr('class', 'eciHead');
 	 		d3.select('#RING').attr('class', 'hover');
-	 		$('.' + id + '.context').fadeIn();
+	 		d3.select('#' + context).attr('class', 'hover eciHead');
+	 		$('.' + context + '.context').fadeIn();
 	 	};
 	 	//Exit Context
 	 	slideshow.exitContext = function () {
@@ -183,6 +193,23 @@ var Slideshow = function (leaflet) {
 	 		d3.select('#RING').attr('class', 'hover');
 	 		d3.select('#' + context).attr('class', 'hover eciHead');
 	 	};
+	 	//Arrow Highlighting Sequence
+	 	slideshow.highlightArrows = function (number) {
+	 		var i = 1;
+		 		slideshow.sequence = setInterval(function () {
+		 			d3.selectAll('.arrow').transition().duration(600).ease("easeOutCirc").attr("fill", "#9B3B47");
+		 			d3.selectAll('.arrowCircle').transition().duration(600).ease("easeOutCirc").attr("fill", "#FFFFFF");
+		 			d3.select('#a' + i).transition().duration(600).ease("easeOutCirc").attr("fill", "#FFFFFF");
+		 			d3.select('#aC' + i).transition().duration(600).ease("easeOutCirc").attr("fill", "#9B3B47");
+		 			i === (number + 1) ? slideshow.clearSequence() : i = i;
+		 			i++;
+	 			}, 1000);
+	 	};
+	 	slideshow.clearSequence = function () {
+	 		clearInterval(slideshow.sequence);
+	 		d3.selectAll('.arrow').transition().duration(600).ease("easeOutCirc").attr("fill", "#9B3B47");
+	 		d3.selectAll('.arrowCircle').transition().duration(600).ease("easeOutCirc").attr("fill", "#FFFFFF");
+	 	};
 	};
 
 /**
@@ -196,6 +223,21 @@ var Leaflet = function () {
 	 	leaflet.level = ko.observable(null);
 
 	 	//Leaflet State Objects
+	 	leaflet.first = {
+	 		name: "first",
+	 		animations: [
+	 			{selector: ".leaflet", attr: "left", value: "0px", duration: 600},
+		 		{selector: "#leafletWrapper", attr: "width", value: "50px", duration: 600},
+		 		{selector: '.tspStem', attr: "background-color", value: "#9a3b47"},
+		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: ".sliding", attr: "left", value: "-550px", duration: 600},
+		 		{selector: ".tspLeaf", attr: "left", value: "0px", duration: 600},
+		 		{selector: ".siStem", attr: "left", value: "225px", duration: 600},
+		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
+		 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
+		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
+		 	]
+		};
 	 	leaflet.initial = {
 	 		name: "initial",
 	 		animations: [
@@ -208,7 +250,8 @@ var Leaflet = function () {
 		 		{selector: ".siStem", attr: "left", value: "225px", duration: 600},
 		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
 		 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
-		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
+		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600},
+		 		{selector: '.eciStem', attr: "background-color", value: "#600922"}
 		 	]
 		};
 	 	leaflet.tspShow = {
@@ -224,7 +267,8 @@ var Leaflet = function () {
 		 		{selector: ".siStem", attr: "left", value: "225px", duration: 600},
 		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
 		 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
-		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
+		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600},
+		 		{selector: '.eciStem', attr: "background-color", value: "#600922"}
 		 	]
 		};
 	 	leaflet.siShow = {
@@ -240,7 +284,8 @@ var Leaflet = function () {
 		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
 		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
 		 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
-		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600}
+		 		{selector: ".eciStem", attr: "left" , value: "175px", duration: 600},
+		 		{selector: '.eciStem', attr: "background-color", value: "#600922"}
 		 	]
 		};
 	 	leaflet.siSelect = {
@@ -256,7 +301,8 @@ var Leaflet = function () {
 		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
 		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
 		 		{selector: ".siLeaf .slider", attr: "left", value: "-500px", duration: 600},
-		 		{selector: ".eciStem", attr: "left", value: "175px", duration: 600}
+		 		{selector: ".eciStem", attr: "left", value: "175px", duration: 600},
+		 		{selector: '.eciStem', attr: "background-color", value: "#600922"}
 	 		]
 	 	};
 	 	leaflet.engage = {
@@ -269,9 +315,10 @@ var Leaflet = function () {
 		 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
 		 		{selector: ".tspLeaf", attr: "left", value: "-500px", duration: 600},
 		 		{selector: ".siStem", attr: "left", value: "-275px", duration: 600},
-		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
+		 		{selector: '.siStem', attr: "background-color", value: "#6005922"},
 		 		{selector: ".siLeaf", attr: "left", value: "49px", duration: 600},
 		 		{selector: ".siLeaf .slider", attr: "left", value: "-500px", duration: 600},
+		 		{selector: '.eciStem', attr: "background-color", value: "#9a3b47"},
 		 		{selector: ".eciStem", attr: "left", value: "273px", duration: 600}
 	 		]
 	 	};
@@ -288,11 +335,27 @@ var Leaflet = function () {
 		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
 		 		{selector: ".siLeaf", attr: "left", value: "-452px", duration: 600},
 		 		{selector: ".siLeaf .slider", attr: "left", value: "0px", duration: 600},
-		 		{selector: ".eciStem", attr: "left", value: "-275px", duration: 600}
+		 		{selector: ".eciStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.eciStem', attr: "background-color", value: "#600922"}
 		 	]
 		};
-
-	 	leaflet.state = leaflet.initial;
+		leaflet.last = {
+			name: "last",
+			animations: [
+				{selector: ".leaflet", attr: "left", value: "0px", duration: 600},
+		 		{selector: '#leafletWrapper', attr: "width", value: "150px", duration: 800},
+		 		{selector: ".tspStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.tspStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".sliding", attr: "left", value: "50px", duration: 600},
+		 		{selector: ".tspLeaf", attr: "left", value: "-500px", duration: 600},
+		 		{selector: ".siStem", attr: "left", value: "-275px", duration: 600},
+		 		{selector: '.siStem', attr: "background-color", value: "#600922"},
+		 		{selector: ".siLeaf", attr: "left", value: "-449px", duration: 600},
+		 		{selector: ".siLeaf .slider", attr: "left", value: "-1000px", duration: 600},
+		 		{selector: '.eciStem', attr: "left", value: "-225px", duration: 600},
+		 		{selector: '.eciStem', attr: "background-color", value: "#600922"}
+			]
+		};
 
 	/**
 	 *	Leaflet Methods
@@ -347,10 +410,14 @@ var Leaflet = function () {
 	 			}
 	 			else {
 	 				styleElem({selector: animations[i].selector, attr: animations[i].attr, value: animations[i].value});
-	 			}
+	 			};
 	 		};
 	 		leaflet.state = state;
 	 		return leaflet.state;
+	 	};
+	 	leaflet.clearHeaders = function () {
+	 		$('.siLevels .header').removeClass("selected");
+			$('.siDimensions .header').removeClass("selected");
 	 	};
 	};
 
@@ -376,11 +443,12 @@ var Leaflet = function () {
 		$('.previous').on("click", function () {
 			interactive.prev();
 			interactive.displayLeaflet();
+			$('.mask').hide();
 		});
 		//Navigation - To Home
 		$('.icon.home').on("click", function () {
 			interactive.home();
-			interactive.displayLeaflet();
+			interactive.leaflet.hide();
 			interactive.leaflet.active === true ? interactive.leaflet.toggle() : false;
 			leaflet.level(null);
 			leaflet.dimension(null);
@@ -403,23 +471,26 @@ var Leaflet = function () {
 			interactive.contextsActive = false;
 		});
 		//Contexts Button Hover Over
-		$('#CONTEXTS_button').on("mouseover", function () {
+		$('#CONTEXTS_button, #STATEPOLICY_button, #COMMUNITY_button, #HIGHEREDUCATION_button, #LOCALPOLICY_button').on("mouseover", function (e) {
 			if (interactive.contextsActive === false) {
+				var target = (e.currentTarget.id).split("_")[0];
 				d3.select('#RING').attr("class", "hover");
-				d3.select('#CONTEXTS').attr("class", "hover eciHead");
+				d3.select('#' + target).attr("class", "hover eciHead");
 			}
 		});
 		//Contexts Button Hover Out
-		$('#CONTEXTS_button').on("mouseout", function () {
+		$('#CONTEXTS_button, #STATEPOLICY_button, #COMMUNITY_button, #HIGHEREDUCATION_button, #LOCALPOLICY_button').on("mouseout", function (e) {
 			if (interactive.contextsActive === false) {
+				var target = (e.currentTarget.id).split("_")[0];
 				d3.select('#RING').attr("class", "");
-				d3.select('#CONTEXTS').attr("class", "eciHead");
+				d3.select('#' + target).attr("class", "eciHead");
 			}
 		});
 		//Contexts Button Click
-		$('#CONTEXTS_button').on("click", function () {
+		$('#CONTEXTS_button, #STATEPOLICY_button, #COMMUNITY_button, #HIGHEREDUCATION_button, #LOCALPOLICY_button').on("click", function (e) {
+			var target = (e.currentTarget.id).split("_")[0];
 			interactive.contextsActive = true;
-			interactive.showContext("CONTEXTS");
+			interactive.showContext(target);
 		});
 		//Contexts Next/Previous
 		$('.n, .p').on("click", function (e) {
@@ -430,16 +501,22 @@ var Leaflet = function () {
 		$('.eciModal .dismissModal').on("click", function () {
 			$('.mask').fadeOut();
 			$('.eciModal').fadeOut();
+			interactive.highlightArrows(6);
+		});
+		//Dismiss si Modal
+		$('.siModal .dismissModal').on("click", function () {
+			$('.mask').fadeOut();
+			$('.siModal').fadeOut();
 		});
 		//Dismiss TSP Modal
 		$('.tspModal .dismissModal').on("click", function () {
-			$('.mask').fadeOut();
 			$('.tspModal').fadeOut();
 			$('.leaflet').fadeIn();
-			leaflet.setState(leaflet.initial);
+			leaflet.setState(leaflet.tspShow);
 		});
 		//Open SI Leaflet
 		$('.s2-img5, .s2-img6, .s2-img7, .s2-img8, .s2-img9, .s2-img10').on("click", function () {
+			leaflet.clearHeaders();
 			leaflet.setState(leaflet.siSelect);
 		});
 
@@ -452,6 +529,7 @@ var Leaflet = function () {
 			(leaflet.active === false) ? leaflet.active = true : void(0);
 			$('.tspModal').fadeOut();
 			$('.siModal').fadeOut();
+			$('.eciModal').fadeOut();
 			$('.third').removeClass('selected');
 			(leaflet.state.name === 'tspShow') ? 
 				(leaflet.setState(leaflet.initial), $('.mask').fadeOut()) : (leaflet.state.name === "done") ? 
@@ -465,13 +543,29 @@ var Leaflet = function () {
 		});
 		//SI Stem Click
 		$('.siStem').on("click", function () {
-			(leaflet.state.name === "done") ? 
-				(leaflet.setState(leaflet.siSelect), $('.mask').fadeIn()) : (leaflet.setState(leaflet.done), $('.mask').fadeOut());
+			if (leaflet.state.name === "done") {
+				leaflet.setState(leaflet.engage);
+				$('.mask').fadeIn();
+			} else if (leaflet.state.name === "siSelect") {
+				leaflet.setState(leaflet.siShow);
+			} else if (leaflet.state.name === "siShow") {
+				leaflet.setState(leaflet.siSelect);
+			} else if (leaflet.state.name === "last") {
+				leaflet.setState(leaflet.siSelect);
+			} else {
+				leaflet.setState(leaflet.done);
+				$('.mask').fadeOut();
+			};
 		});
 		//SI Next Button Click
 		$('.siNext .button').on("click", function () {
-			$('.back').perfectScrollbar('update');
+			leaflet.clearHeaders();
 			leaflet.setState(leaflet.siSelect);
+			if (interactive.first === true) {
+				setTimeout(function () {
+					$('.siModal').fadeIn();
+				}, 1500)
+			};
 		});
 		//ECI Stem Click
 		$('.eciStem').on("click", function () {
@@ -486,21 +580,27 @@ var Leaflet = function () {
 		//SI - Select Dimension
 		$('.third.dimension').on("click", function (e) {
 			$('.third.dimension.selected').removeClass('selected');
+			$('.siDimensions .header').addClass("selected");
 			$(this).addClass('selected');
 			var data = $(this).data().dimension;
 			leaflet.dimension(data);
 			if ($('.' + data + '.dynamicLevel').hasClass('show')) {
 				return;
 			} else {
+				$('.dynamicLevel').hide();
 				$('.third.level.selected').removeClass('selected');
 				$('.dynamicLevel').removeClass('show');
+				$('.siLevels .header').removeClass("selected");
 				$('.' + data + '.dynamicLevel').addClass('show');
+				$('.dynamicLevel.show').show();
 				leaflet.level(null);
+				leaflet.setState(leaflet.siSelect)				
 			};
 		});
 		//SI - Select Level
 		$('.third.level').on("click", function (e) {
 			$('.third.level.selected').removeClass('selected');
+			$('.siLevels .header').addClass("selected");
 			$(this).addClass('selected');
 			var data = $(this).data().level;
 			leaflet.level(data);

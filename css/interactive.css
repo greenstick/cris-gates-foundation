@@ -27,6 +27,54 @@ SVG Styles
 		width: 100px;
 		height: 20px;
 	}
+	#STATEPOLICY_button {
+		position: absolute;
+		top: 68px;
+		left: 352px;
+		width: 112px;
+		height: 20px;
+		transform: rotate(50deg);
+		-webkit-transform: rotate(50deg);
+		-moz-transform: rotate(50deg);
+		-ms-transform: rotate(50deg);
+		-o-transform: rotate(50deg);
+	}
+	#COMMUNITY_button {
+		position: absolute;
+		top: 400px;
+		left: 334px;
+		width: 100px;
+		height: 20px;
+		transform: rotate(-40deg);
+		-webkit-transform: rotate(-40deg);
+		-moz-transform: rotate(-40deg);
+		-ms-transform: rotate(-40deg);
+		-o-transform: rotate(-40deg);
+	}
+	#HIGHEREDUCATION_button {
+		position: absolute;
+		top: 368px;
+		left: -12px;
+		width: 142px;
+		height: 20px;
+		transform: rotate(50deg);
+		-webkit-transform: rotate(50deg);
+		-moz-transform: rotate(50deg);
+		-ms-transform: rotate(50deg);
+		-o-transform: rotate(50deg);
+	}
+	#LOCALPOLICY_button {
+		position: absolute;
+		top: 48px;
+		left: 28px;
+		width: 112px;
+		height: 20px;
+		transform: rotate(-40deg);
+		-webkit-transform: rotate(-40deg);
+		-moz-transform: rotate(-40deg);
+		-ms-transform: rotate(-40deg);
+		-o-transform: rotate(-40deg);
+	}
 
 /* 
 Basic Styles
@@ -166,11 +214,16 @@ Basic Styles
 	.slide:nth-child(2) .head .nav {
 		position: relative;
 		top: 0px;
-		left: 834px;
-		width: 66px;
+		left: 798px;
+		width: 102px;
 		height: 48px;
 		display: inline-block;
-	}	
+	}
+	.slide:nth-child(2) .head .nav .button {
+		position: relative;
+		width: 60px;
+		display: inline-block;
+	}
 	.slide:nth-child(2) .head .nav .button:hover {
 		color: #9a3b47;
 	}
@@ -257,7 +310,7 @@ Basic Styles
 	.slide:nth-child(2) .content .center .dimensions .subhead .header{
 		position: relative;
 		top: 28px;
-		left: 0px;
+		left: -4px;
 		width: 108px;
 		height: 16px;
 		padding: 4px 0 0 0;
@@ -497,7 +550,7 @@ Basic Styles
 	}
 	.tspModal .content .button {
 		position: relative;
-		top: 12px;
+		top: 0px;
 		left: 540px;
 		height: 40px;
 		width: 140px;
@@ -531,8 +584,8 @@ Basic Styles
 	.slide:nth-child(3) .head .nav {
 		position: relative;
 		top: 0px;
-		left: 804px;
-		width: 96px;
+		left: 798px;
+		width: 102px;
 		height: 48px;
 		display: inline-block;
 	}
@@ -574,10 +627,16 @@ Basic Styles
 		width: 472px;
 		height: 472px;
 	}
-	.slide:nth-child(3) .content .center .carrot {
+	.slide:nth-child(3) .content .center .next {
+		position: absolute;
+		top: 228px;
+		left: 534px;
+		width: 96px;
+		height: 22px;
+	}
+	.slide:nth-child(3) .content .center .next .carrot {
 		position: relative;
-		top: -242px;
-		left: 596px;
+		top: 2px;
 	}
 	.slide:nth-child(3) .content .right {
 		position: absolute;
@@ -712,6 +771,73 @@ Basic Styles
 
 /* Slide 3 Modal */
 
+	.siModal {
+		position: absolute;
+		top: 50%;
+		left: 1110px;
+		width: 480px;
+		height: 280px;
+		z-index: 1000;
+		margin: -140px 0 0 0;
+		border-radius: 28px 28px 28px 28px;
+		-webkit-border-radius: 28px 28px 28px 28px;
+		-moz-border-radius: 28px 28px 28px 28px;
+		-ms-border-radius: 28px 28px 28px 28px;
+		-o-border-radius: 28px 28px 28px 28px;
+		background-color: #FFFFFF;
+		display: none;
+	}
+	.siModal .head {
+		position: relative;
+		top: 0px;
+		width: 438px;
+		height: 118px;
+		margin: 24px auto 0;
+		border: none;
+	}
+	.siModal .head .m2-img2 {
+		position: relative;
+		top: 0px;
+		left: 416px;
+	}
+	.siModal .head .header {
+		position: relative;
+		top: 24px;
+		width: 392px;
+		height: 24px;
+		margin: 0 auto;
+		padding-top: 12px;
+		border: 4px solid #424142;
+		font-weight: bold;
+		font-size: 16px;
+		letter-spacing: 2px;
+		text-align: center;
+	}
+	.siModal .content {
+		position: relative;
+		height: 138px;
+		width: 272px;
+		margin: 0 auto;
+		line-height: 24px;
+		font-size: 14px;
+		font-weight: normal;
+		font-family: 'Lusitana', serif;
+	}
+	.siModal .content .button {
+		position: relative;
+		top: 20px;
+		left: 548px;
+		font-size: 14px;
+		font-weight: bold;
+		letter-spacing: 1px;
+	}
+	.siModal .content .button img {
+		position: relative;
+		top: 2px;
+	}
+
+/* Slide 3 Modal */
+
 	.eciModal {
 		position: absolute;
 		top: 50%;
@@ -799,23 +925,31 @@ Basic Styles
 	.slide:nth-child(4) .head .nav {
 		position: absolute;
 		top: 0px;
-		left: 764px;
-		width: 132px;
+		left: 734px;
+		width: 166px;
 		height: 48px;
 		display: inline-block;
 		font-size: 12px;
 	}
 	.slide:nth-child(4) .head .nav .button {
 		position: relative;
-		width: 94px;
 		display: inline-block;
 		color: #FFFFFF;
 	}
+	.slide:nth-child(4) .head .nav .button.previous {
+		width: 64px;
+	}
+	.slide:nth-child(4) .head .nav .button.home {
+		width: 94px;
+	}
 	.slide:nth-child(4) .head .nav .button:hover {
-		color: #9a3b47;
+		color: #8D4349;
 	}
 	.slide:nth-child(4) .head .nav .button:hover .s4-img1 {
 		background: url('../img/refreshiconsprite_30.png') 0 -30px;
+	}
+	.slide:nth-child(4) .head .nav .button:hover  .s4-img2 {
+		background: url('../img/backcarrotsprite_white.png') 0 -15px;
 	}
 	.slide:nth-child(4) .head .crHeader {
 		position: relative;
@@ -965,6 +1099,14 @@ Basic Styles
 		display: inline-block;
 		background: url('../img/refreshiconsprite_30.png') 0 0;
 	}
+	.s4-img2 {
+		position: relative;
+		top: 3px;
+		width: 15px;
+		height: 15px;
+		display: inline-block;
+		background: url('../img/backcarrotsprite_white.png');
+	}
 
 	/* Leaflet */
 
@@ -980,16 +1122,15 @@ Basic Styles
 	.leaflet {
 		position: absolute;
 		top: 0px;
-		left: -50px;
+		left: 0px;
 		width: 50px;
 		height: 600px;
 		background-color: #9a3b47;
-		display: block;
 		font: 'Montserrat';
 		font-family: 'Montserrat', sans-serif;
 		font-size: 12px;
 		color: #231f20;
-		opacity: 1;
+		display: none;
 	}
 	.leaflet .static {
 		position: relative;
@@ -1257,6 +1398,12 @@ Basic Styles
 		border: 2px solid #818385;
 		text-align: center;
 		color: #818385;
+		background-color: #FFFFFF;
+	}
+	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .header.selected, .leaflet .sliding .siLeaf .slider .si2 .siLevels .header.selected {
+		color: #FFFFFF;
+		border: 2px solid #600922;
+		background-color: #9a3b47;
 	}
 	.leaflet .sliding .siLeaf .slider .si2 .siDimensions .third, .leaflet .sliding .siLeaf .slider .si2 .siLevels .third {
 		height: 168px;
@@ -1379,9 +1526,6 @@ Basic Styles
 		font-size: 12px;
 		line-height: 16px;
 	}
-	.leaflet .dynamicLevel {
-		display: none;
-	}
 	.leaflet .dynamicLevel.show {
 		display: block;
 	}
@@ -1391,11 +1535,6 @@ Basic Styles
 		left: 175px;
 		z-index: -10;
 		cursor: pointer;
-		-webkit-transition: background-color .6s;
-		-moz-transition: background-color .6s;
-		-ms-transition: background-color .6s;
-		-o-transition: background-color .6s;
-		transition: background-color .6s;
 	}
 	.leafletNav {
 		position: absolute;
@@ -1407,7 +1546,7 @@ Basic Styles
 		color: #9a3b47;
 	}	
 	.leafletNav .button {
-		position: relative;
+		/*position: relative;*/
 		width: 60px;
 		display: inline-block;
 	}
@@ -1427,6 +1566,7 @@ Basic Styles
 		visibility: visible;
 	}
 	.ps-container .ps-scrollbar-y-rail {
+		background-color: #600922;
 	    position: absolute; /* please don't change 'position' */
 	    right: 0px; /* there must be 'right' for ps-scrollbar-y-rail */
 	    width: 9px;
@@ -1444,12 +1584,14 @@ Basic Styles
 	}
 	.ps-container .ps-scrollbar-y {
 	    position: absolute; /* please don't change 'position' */
-	    right: 1px; /* there must be 'right' for ps-scrollbar-y */
-	    width: 7px;
+	    right: 2px; /* there must be 'right' for ps-scrollbar-y */
+	    width: 6px;
+	    height: 40px;
 	    display: block;
 	    visibility: visible;
 	}
 	.ps-container.ie6 .ps-scrollbar-y {
+		background-color: #600922;
 	    font-size: 0; /* fixed scrollbar height in xp sp3 ie6 */
 	    cursor: pointer;
 	    display: block;
@@ -1457,7 +1599,7 @@ Basic Styles
 	}
 	.ps-container .ps-scrollbar-y-rail .ps-scrollbar-y,
 	.ps-container .ps-scrollbar-y-rail .ps-scrollbar-y {
-	    background-color: #9a3b47;
+		background-color: #9a3b47;
 	    cursor: pointer;
 	    display: block;
 	    visibility: visible;
